@@ -13,6 +13,9 @@
 #include "tests.h"
 #include "production.h"
 #include "TMSName.h"
+#include "TimothyGoon.h"
+#include "PatrickHoulihan.h"
+#include "Search.h"
 
 int main(int argc, char* argv[]) {
 	puts("!!!Let's do HW1!!!"); /* prints !!!Hello World!!! */

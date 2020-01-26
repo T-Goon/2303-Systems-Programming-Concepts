@@ -25,6 +25,7 @@ bool production(int argc, char* argv[])
 		long aL=-1L;
 		int maxRooms;
 		int maxTreasure;
+
 		for(int i = 1; i<argc; i++) //don't want to read argv[0]
 		{//argv[i] is a string
 			//in this program our arguments are a filename followed by the max of rooms, followed by max of treasure
