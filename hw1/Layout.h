@@ -1,7 +1,13 @@
-//
-// Created by Buddy on 1/26/2020.
-//
-
+/*
+ ============================================================================
+ Name        : Layout.h
+ Author      : Timothy Goon, Patrick Houlihan
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Layout header
+ ============================================================================
+ */
+ 
 #ifndef LAYOUT_H
 #define LAYOUT_H
 

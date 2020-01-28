@@ -1,7 +1,12 @@
-//
-// Created by Buddy on 1/26/2020.
-//
-
+/*
+ ============================================================================
+ Name        : PatrickHoulihan.h
+ Author      : Patrick Houlihan
+ Version     :
+ Copyright   : Your copyright notice
+ Description : My name
+ ============================================================================
+ */
 #ifndef PATRICKHOULIHAN_H
 #define PATRICKHOULIHAN_H
 

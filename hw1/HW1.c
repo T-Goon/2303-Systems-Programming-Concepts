@@ -1,10 +1,10 @@
 /*
  ============================================================================
- Name        : HW3.c
- Author      : 
+ Name        : HW1.c
+ Author      : Timothy Goon, Patrick Houlihan
  Version     :
  Copyright   : Your copyright notice
- Description : Hello World in C, Ansi-style
+ Description : HW1 C file which runs tests and command line args when executing production
  ============================================================================
  */
 

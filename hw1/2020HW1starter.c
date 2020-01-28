@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : 2020HW1starter.c
- Author      : 
+ Author      : Timothy Goon, Patrick Houlihan
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style

@@ -4,6 +4,15 @@
  *  Created on: Jul 4, 2019
  *      Author: Therese
  */
+ /*
+ ============================================================================
+ Name        : production.c
+ Author      : Timothy Goon, Patrick Houlihan
+ Version     :
+ Copyright   : Your copyright notice
+ Description : The main body of code which executes in HW1.c
+ ============================================================================
+ */
 #include "production.h"
 
 bool production(int argc, char* argv[])

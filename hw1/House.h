@@ -1,6 +1,13 @@
-//
-// Created by Buddy on 1/26/2020.
-//
+/*
+ ============================================================================
+ Name        : House.h 
+ Author      : Timothy Goon, Patrick Houlihan
+ Version     :
+ Copyright   : Your copyright notice
+ Description : The House header with function stubs
+ ============================================================================
+ */
+
 
 #ifndef HOUSE_H
 #define HOUSE_H
