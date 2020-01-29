@@ -12,12 +12,10 @@
 #ifndef HOUSE_H
 #define HOUSE_H
 
-#include <stdbool.h>
 #include "Layout.h"
-#include "Room.h"
 
-int countRooms();
+int getNumberOfRooms();
 
-struct getFirstRoom();
+Room getNewRoom();
 
 #endif //HOUSE_H

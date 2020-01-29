@@ -15,6 +15,6 @@
 
 int countRooms();
 
-struct getFirstRoom();
+Room getFirstRoom();
 
 #endif //LAYOUT_H

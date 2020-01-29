@@ -16,12 +16,13 @@ bool open();
 
 bool haveTreasure();
 
-struct Room {
+typedef struct {
     int index;
     char type [20];
     bool open;
     bool treasure;
 }
+Room;
 
 
 #endif //ROOM_H

@@ -14,8 +14,5 @@
 #include "House.h"
 #include "Room.h"
 
-int getNumberOfRooms();
-
-struct getNewRoom();
 
 #endif //SEARCH_H
