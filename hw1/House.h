@@ -14,9 +14,10 @@
 
 #include <stdbool.h>
 #include "Layout.h"
+#include "Room.h"
 
-int getNumberOfRooms();
+int countRooms();
 
-int getNewRoom();
+struct getFirstRoom();
 
 #endif //HOUSE_H

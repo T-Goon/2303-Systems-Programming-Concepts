@@ -1,10 +1,12 @@
-/*
- * tests.h
- *
- *  Created on: Jul 4, 2019
- *      Author: Therese
- */
-
+ /*
+ ============================================================================
+ Name        : tests.h
+ Author      : Timothy Goon, Patrick Houlihan
+ Version     :
+ Copyright   : Your copyright notice
+ Description : The header for tests.c
+ ============================================================================
+*/
 #ifndef TESTS_H_
 #define TESTS_H_
 

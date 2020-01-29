@@ -1,10 +1,12 @@
-/*
- * production.h
- *
- *  Created on: Jul 4, 2019
- *      Author: Therese
+ /*
+ ============================================================================
+ Name        : production.h
+ Author      : Timothy Goon, Patrick Houlihan
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Production ehader which imports necessary production libraries.
+ ============================================================================
  */
-
 #ifndef PRODUCTION_H_
 #define PRODUCTION_H_
 #include <stdio.h>

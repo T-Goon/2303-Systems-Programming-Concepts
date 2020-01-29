@@ -1,10 +1,12 @@
 /*
- * tests.c
- *
- *  Created on: Jul 4, 2019
- *      Author: Therese
- */
-
+ ============================================================================
+ Name        : test.c
+ Author      : Timothy Goon, Patrick Houlihan
+ Version     :
+ Copyright   : Your copyright notice
+ Description : The tests which we will eventually apply to a project
+ ============================================================================
+*/
 #include "tests.h"
 #include "production.h"
 
