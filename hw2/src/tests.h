@@ -14,7 +14,7 @@ bool tests();
 
 bool testReadFile();
 bool testGotAdjacencyMatrix();
-bool testSomethingElse();
+bool testPlaceMarker();
 bool testRemoveFromList();
 
 

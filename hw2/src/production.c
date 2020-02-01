@@ -5,6 +5,7 @@
  *      Author: Therese
  */
 #include "production.h"
+#include "space.h"
 
 bool production(int argc, char* argv[])
 {
