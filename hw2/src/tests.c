@@ -6,9 +6,6 @@
  */
 
 #include "tests.h"
-#include "production.h"
-#include "marker.h"
-#include "space.h"
 
 bool tests()
 {
@@ -17,8 +14,9 @@ bool tests()
 	bool ok2 = testGotAdjacencyMatrix();
 	bool ok3 = testPlaceMarker();
 	bool ok4 = testRemoveFromList();
+	bool ok5 = testDisplaySpace();
 	printf("place marker test pass: %d\n", ok3);
-	answer = ok1 && ok2 && ok3 && ok4;
+	answer = ok1 && ok2 && ok3 && ok4 && ok5;
 	return answer;
 }
 
@@ -118,4 +116,21 @@ bool testRemoveFromList()
 	//test case 2:
 
 	return ok;
+}
+
+/// Test for dipplaySpace() in space.c.
+bool testDisplaySpace(){
+    bool ans = true;
+
+    // 5 by 5 board with main diagonal filled with 2s
+    int boardsize = 5;
+    int* board = (int*) malloc(boardsize*boardsize*sizeof(int));
+    initSpace(board, boardsize);
+    for(int i=0; i< boardsize; i++){
+        *(board + i*boardsize + i) = 2;
+    }
+
+    displaySpace(board, boardsize);
+
+    return ans;
 }

@@ -9,6 +9,9 @@
 #define SPACE_H_
 
 #include <stdbool.h>
-bool initSpace(int*, int);
+#include <stdio.h>
+bool initSpace(int* corner, int howManyRows);
+
+void displaySpace(int* board, int size);
 
 #endif /* SPACE_H_ */

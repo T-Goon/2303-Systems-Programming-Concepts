@@ -22,3 +22,20 @@ bool initSpace(int* corner, int howManyRows)
 	}
 	return ok;
 }
+
+/// Prints the board to the console.
+/// board: pointer to square 2D array
+/// size: side length of square board
+void displaySpace(int* board, int size){
+
+    for(int i=0; i<size; i++){
+        for(int j=0; j<size; j++){
+            printf("%d | ", *(board + i*size + j));
+        }
+        printf("\n");
+        for(int j=0; j<size; j++){
+            printf("-   ");
+        }
+        printf("\n");
+    }
+}

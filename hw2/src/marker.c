@@ -5,16 +5,12 @@
  *      Author: Therese
  */
 
-#include <stdlib.h>
 #include "marker.h"
 
 /// Creates a new marker at specified location with specified index.
 /// Also updates the board.
 Marker* placeMarker(int* board, int bSize, int row, int col, int index)
 {
-    if(row >= bSize || col >= bSize || row < 0 || col < 0){
-
-    }
 
     // Create new marker and fill with the correct values.
 	Marker* mP = (Marker*) malloc (sizeof(Marker));

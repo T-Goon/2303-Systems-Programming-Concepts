@@ -8,6 +8,8 @@
 #ifndef MARKER_H_
 #define MARKER_H_
 
+#include <stdlib.h>
+#include <stdbool.h>
 
 //Creates a struct called Marker with three data fields
 typedef struct
@@ -16,8 +18,6 @@ typedef struct
    int row;
    int col;
 }Marker;
-
-#include <stdbool.h>
 
 Marker* placeMarker(int* board, int bSize,int row, int col, int index);
 
