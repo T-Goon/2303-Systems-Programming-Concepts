@@ -8,6 +8,8 @@
 #ifndef LINKEDLIST_H_
 #define LINKEDLIST_H_
 
+#include <stdlib.h>
+#include <stdio.h>
 #include <stdbool.h>
 #include "marker.h"
 
