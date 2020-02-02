@@ -20,19 +20,17 @@
 
 int main(int argc, char* argv[]) {
 	puts("!!!Let's do HW2  !!!"); /* prints !!!Hello World!!! */
-
-	int boardsize = 20;
-	//MemoryAllOCation for a square Board  (of integers)
-	int* theSpaceP = (int*) malloc(boardsize*boardsize*sizeof(int));
-
-    //Initialize
-	bool okInit = initSpace(theSpaceP, 20);
-
-	puts("Board initialized");
-
-	DLLNode* classDLL = makeEmptyLinkedList();
-
-	//----------------------------------------------------------------------------------
+//
+//	int boardsize = 20;
+//	//MemoryAllOCation for a square Board  (of integers)
+//	int* theSpaceP = (int*) malloc(boardsize*boardsize*sizeof(int));
+//
+//    //Initialize
+//	bool okInit = initSpace(theSpaceP, 20);
+//
+//	puts("Board initialized");
+//
+//	DLLNode* classDLL = makeEmptyLinkedList();
 
 //	printHistory(classDLL);
 //
@@ -57,8 +55,8 @@ int main(int argc, char* argv[]) {
 //		markerP->row = markerRow;
 //		markerP->col = markerCol;
 //
-////		printf("index %d row %d column %d \n", markdrop, markerRow, markerCol);
-////        printf("index %d row %d column %d \n", markerP->index, markerP->row, markerP->col);
+//		printf("index %d row %d column %d \n", markdrop, markerRow, markerCol);
+//        printf("index %d row %d column %d \n", markerP->index, markerP->row, markerP->col);
 //
 //        savePayload(boardDLL, markerP);
 //
@@ -75,7 +73,7 @@ int main(int argc, char* argv[]) {
 //	}
 //
 //	int firstPayload = boardDLL->payP->index;
-////	printf("first index is %d\n", firstPayload);
+//	printf("first index is %d\n", firstPayload);
 //
 //
 //
@@ -88,7 +86,7 @@ int main(int argc, char* argv[]) {
 //	while(!isEmpty(boardDLL))
 //	{
 //		tempMarker =  dequeueLIFO(boardDLL);
-////		printf ("\nindex %d row %d column %d\n", tempMarker->index, tempMarker->row, tempMarker->col);
+//		printf ("\nindex %d row %d column %d\n", tempMarker->index, tempMarker->row, tempMarker->col);
 //	}
 //
 //

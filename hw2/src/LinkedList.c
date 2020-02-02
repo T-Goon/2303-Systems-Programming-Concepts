@@ -7,8 +7,6 @@
 
 
 #include "LinkedList.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 //Asks where DoublyLinkedList is empty  Takes doubly-linked list Pointer
 bool isEmpty(DLLNode* dlP)

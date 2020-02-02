@@ -12,12 +12,14 @@
 #include "production.h"
 #include "marker.h"
 #include "space.h"
+#include "LinkedList.h"
 bool tests();
 
 bool testReadFile();
 bool testGotAdjacencyMatrix();
 bool testPlaceMarker();
-bool testRemoveFromList();
+bool testEmptyLinkedList();
+bool testAddToLinkedList();
 bool testDisplaySpace();
 bool testMoveMarker();
 

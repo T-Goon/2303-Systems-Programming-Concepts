@@ -14,11 +14,25 @@ bool tests()
 	bool ok1 =  testReadFile();
 	bool ok2 = testGotAdjacencyMatrix();
 	bool ok3 = testPlaceMarker();
+<<<<<<< HEAD
 	bool ok4 = testRemoveFromList();
 	bool ok5 = testDisplaySpace();
 	bool ok6 = testMoveMarker();
 	printf("place marker test pass: %d\n", ok3);
 	answer = ok1 && ok2 && ok3 && ok4 && ok5;
+=======
+    printf("place marker test pass: %d\n", ok3);
+
+	bool ok4 = testEmptyLinkedList();
+    printf("empty linked list test pass: %d\n", ok4);
+    bool ok5 = testAddToLinkedList();
+    printf("add to linked list test pass: %d\n", ok5);
+
+	bool ok6 = testDisplaySpace();
+    printf("display space test pass: %d\n", ok6);
+
+	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6;
+>>>>>>> cbc3cb4efc93dbe5a9a1a8a85e92e4b935f4f728
 	return answer;
 }
 
@@ -125,14 +139,44 @@ bool testPlaceMarker()
 	return ans;
 }
 
-bool testRemoveFromList()
+/// Test creation of empty linked list
+bool testEmptyLinkedList()
 {
-	bool ok = true;
-	//what are the criteria for success for
-	//test case 1:
-	//test case 2:
+	bool ans = true;
+	// Manually create a linked list node to compare to
+    DLLNode* node = (DLLNode*) malloc(sizeof(DLLNode));
+    node->next = NULL;
+    node->prev = NULL;
+    node->payP = NULL;
+    DLLNode* empty = makeEmptyLinkedList();
 
-	return ok;
+	ans = ans && empty->next == node->next
+	        && empty->prev == node->prev
+	        && empty->payP == node->payP;
+
+	return ans;
+}
+
+///Test creation of linked list of length 1
+bool testAddToLinkedList(){
+    bool ans = true;
+    DLLNode* node = makeEmptyLinkedList();
+    Payload* load = (Payload*) malloc (sizeof(Marker));
+
+    // add payload to linked list
+    savePayload(node, load);
+
+    ans = ans && node->payP == load;
+
+    // add second payload to linked list
+    // should increase length of list
+    Payload* load2 = (Payload*) malloc (sizeof(Marker));
+    savePayload(node, load2);
+    DLLNode* node2 = (DLLNode*)node->next;
+
+    ans = ans && node2->payP == load2;
+
+    return ans;
 }
 
 /// Test for dipplaySpace() in space.c.
