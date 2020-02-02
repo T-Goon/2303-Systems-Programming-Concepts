@@ -19,5 +19,6 @@ bool testGotAdjacencyMatrix();
 bool testPlaceMarker();
 bool testRemoveFromList();
 bool testDisplaySpace();
+bool testMoveMarker();
 
 #endif /* TESTS_H_ */

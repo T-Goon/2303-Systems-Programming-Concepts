@@ -6,6 +6,26 @@
  */
 #include "production.h"
 #include "space.h"
+#include "marker.h"
+#include "LinkedList.h"
+#include <time.h>
+DLLNode* moveMarker(int* board, int bSize, Marker* initialMarker, int numMarkers)
+{
+    DLLNode* initialList = makeEmptyLinkedList();
+    savePayload(initialList, initialMarker);
+    int row;
+    int col;
+    srand(time(0));
+    for (int i = 1; i < numMarkers; i++)
+    {
+        row = rand() % 20;
+        col = rand() % 20;
+        savePayload(initialList, placeMarker(board, bSize, i, i, i));
+    }
+    printHistory(initialList);
+    displaySpace(board, 20);
+    return initialList;
+}
 
 bool production(int argc, char* argv[])
 {
