@@ -15,15 +15,18 @@ DLLNode* moveMarker(int* board, int bSize, Marker* initialMarker, int numMarkers
     savePayload(initialList, initialMarker);
     int row;
     int col;
+
     srand(time(0));
     for (int i = 1; i < numMarkers; i++)
     {
         row = rand() % 20;
         col = rand() % 20;
-        savePayload(initialList, placeMarker(board, bSize, i, i, i));
+        savePayload(initialList, placeMarker(board, bSize, row, col, i));
     }
+
     printHistory(initialList);
     displaySpace(board, 20);
+
     return initialList;
 }
 

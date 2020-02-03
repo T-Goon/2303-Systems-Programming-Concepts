@@ -24,6 +24,10 @@ Marker* placeMarker(int* board, int bSize, int row, int col, int index)
 	mP -> col = col;
 	mP -> index = index;
 
+	if(index%10 == 0){
+	    index = -1;
+	}
+
 	// Put the index number in the location of the marker on the board.
     *(board + row*bSize + col) = index;
 

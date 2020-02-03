@@ -14,19 +14,20 @@ bool tests()
 	bool ok1 =  testReadFile();
 	bool ok2 = testGotAdjacencyMatrix();
 	bool ok3 = testPlaceMarker();
-  printf("place marker test pass: %d\n", ok3);
+    printf("place marker test pass: %d\n", ok3);
 
 	bool ok4 = testEmptyLinkedList();
-  printf("empty linked list test pass: %d\n", ok4);
-  bool ok5 = testAddToLinkedList();
-  printf("add to linked list test pass: %d\n", ok5);
+    printf("empty linked list test pass: %d\n", ok4);
+    bool ok5 = testAddToLinkedList();
+    printf("add to linked list test pass: %d\n", ok5);
 
 	bool ok6 = testDisplaySpace();
-  printf("display space test pass: %d\n", ok6);
+    printf("display space test pass: %d\n", ok6);
   
-  bool ok7 = testMoveMarker();
+    bool ok7 = testMoveMarker();
+    printf("move marker test pass: %d\n", ok7);
 
-	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6;
+	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7;
 
 	return answer;
 }
@@ -60,6 +61,7 @@ bool testGotAdjacencyMatrix()
 	return ans;
 }
 
+/// Tests moveMarker() in production.c.
 bool testMoveMarker()
 {
     bool ans = false;
@@ -67,7 +69,7 @@ bool testMoveMarker()
     int* board = (int*) malloc(boardSize*boardSize*sizeof(int));
     initSpace(board, boardSize);
     Marker* m = placeMarker(board, boardSize, 0, 0, 0);
-    moveMarker(board, boardSize, m,10);
+    moveMarker(board, boardSize, m,21);
     return ans;
 }
 
