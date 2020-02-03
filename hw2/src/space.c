@@ -31,13 +31,8 @@ void displaySpace(int* board, int size){
     for(int i=0; i<size; i++){
         for(int j=0; j<size; j++){
             int num = *(board + i*size + j);
-            if (num == -1){
-                num = 10;
-            } else{
-                num = num % 10;
-            }
 
-            printf("%x | ", num);
+            printf("%x | ", num == -1 ? 10 : num%10);
         }
         printf("\n");
         for(int j=0; j<size; j++){

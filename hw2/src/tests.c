@@ -27,6 +27,9 @@ bool tests()
     bool ok7 = testMoveMarker();
     printf("move marker test pass: %d\n", ok7);
 
+    //TODO Test that the list you produce matches the list your code prints.
+    //TODO There should be several test cases. Length zero, length 1, length greater than 1.
+
 	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7;
 
 	return answer;
@@ -64,6 +67,7 @@ bool testGotAdjacencyMatrix()
 /// Tests moveMarker() in production.c.
 bool testMoveMarker()
 {
+    //TODO a test function that checks the length of your marker path.
     bool ans = false;
     int boardSize = 20;
     int* board = (int*) malloc(boardSize*boardSize*sizeof(int));

@@ -109,6 +109,9 @@ bool production(int argc, char* argv[])
 	int* theSpaceP = (int*) malloc(20*20*sizeof(int));
     bool okInit = initSpace(theSpaceP, 20);
 
+    //TODO Print, from the linked list the path the marker takes through the space.
+
+    //TODO Finally, find a way to run it until all the cells get hit.
 
 	//we'll want to read the file
 	return answer;
