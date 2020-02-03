@@ -7,23 +7,27 @@
 
 #include "tests.h"
 
+
 bool tests()
 {
 	bool answer = false;
 	bool ok1 =  testReadFile();
 	bool ok2 = testGotAdjacencyMatrix();
 	bool ok3 = testPlaceMarker();
-    printf("place marker test pass: %d\n", ok3);
+  printf("place marker test pass: %d\n", ok3);
 
 	bool ok4 = testEmptyLinkedList();
-    printf("empty linked list test pass: %d\n", ok4);
-    bool ok5 = testAddToLinkedList();
-    printf("add to linked list test pass: %d\n", ok5);
+  printf("empty linked list test pass: %d\n", ok4);
+  bool ok5 = testAddToLinkedList();
+  printf("add to linked list test pass: %d\n", ok5);
 
 	bool ok6 = testDisplaySpace();
-    printf("display space test pass: %d\n", ok6);
+  printf("display space test pass: %d\n", ok6);
+  
+  bool ok7 = testMoveMarker();
 
 	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6;
+
 	return answer;
 }
 
@@ -56,13 +60,28 @@ bool testGotAdjacencyMatrix()
 	return ans;
 }
 
+bool testMoveMarker()
+{
+    bool ans = false;
+    int boardSize = 20;
+    int* board = (int*) malloc(boardSize*boardSize*sizeof(int));
+    initSpace(board, boardSize);
+    Marker* m = placeMarker(board, boardSize, 0, 0, 0);
+    moveMarker(board, boardSize, m,10);
+    return ans;
+}
+
 /// Helper for testPlaceMarker(). Checks if 2 boards of a certain size contain all the same values.
-bool boardEquals(int* board1, int* board2, int size){
+bool boardEquals(int* board1, int* board2, int size)
+{
     bool isSame = true;
 
-    for(int i=0; i<size; i++){
-        for(int j=0; j<size; j++){
-            if(*(board1 + i*size + j) != *(board2 + i*size + j)){
+    for(int i=0; i<size; i++)
+    {
+        for(int j=0; j<size; j++)
+        {
+            if(*(board1 + i*size + j) != *(board2 + i*size + j))
+            {
                 isSame = false;
             }
         }
@@ -163,7 +182,8 @@ bool testDisplaySpace(){
     int boardsize = 5;
     int* board = (int*) malloc(boardsize*boardsize*sizeof(int));
     initSpace(board, boardsize);
-    for(int i=0; i< boardsize; i++){
+    for(int i=0; i< boardsize; i++)
+    {
         *(board + i*boardsize + i) = 2;
     }
 

@@ -21,5 +21,6 @@ bool testPlaceMarker();
 bool testEmptyLinkedList();
 bool testAddToLinkedList();
 bool testDisplaySpace();
+bool testMoveMarker();
 
 #endif /* TESTS_H_ */
