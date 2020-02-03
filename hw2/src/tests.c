@@ -14,25 +14,20 @@ bool tests()
 	bool ok1 =  testReadFile();
 	bool ok2 = testGotAdjacencyMatrix();
 	bool ok3 = testPlaceMarker();
-<<<<<<< HEAD
-	bool ok4 = testRemoveFromList();
-	bool ok5 = testDisplaySpace();
-	bool ok6 = testMoveMarker();
-	printf("place marker test pass: %d\n", ok3);
-	answer = ok1 && ok2 && ok3 && ok4 && ok5;
-=======
-    printf("place marker test pass: %d\n", ok3);
+  printf("place marker test pass: %d\n", ok3);
 
 	bool ok4 = testEmptyLinkedList();
-    printf("empty linked list test pass: %d\n", ok4);
-    bool ok5 = testAddToLinkedList();
-    printf("add to linked list test pass: %d\n", ok5);
+  printf("empty linked list test pass: %d\n", ok4);
+  bool ok5 = testAddToLinkedList();
+  printf("add to linked list test pass: %d\n", ok5);
 
 	bool ok6 = testDisplaySpace();
-    printf("display space test pass: %d\n", ok6);
+  printf("display space test pass: %d\n", ok6);
+  
+  bool ok7 = testMoveMarker();
 
 	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6;
->>>>>>> cbc3cb4efc93dbe5a9a1a8a85e92e4b935f4f728
+
 	return answer;
 }
 
