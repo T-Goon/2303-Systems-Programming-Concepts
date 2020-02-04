@@ -38,5 +38,6 @@ bool isEmpty(DLLNode* lp);
 Payload* dequeueLIFO(DLLNode* lp);
 backFromDQFIFO* dequeueFIFO(DLLNode* lp);
 void printHistory(DLLNode* hp);
+int countLength(DLLNode* lp);
 
 #endif /* LINKEDLIST_H_ */

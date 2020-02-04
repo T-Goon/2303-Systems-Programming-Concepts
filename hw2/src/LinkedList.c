@@ -31,6 +31,27 @@ DLLNode* makeEmptyLinkedList()
 	return dlP;
 }
 
+//helper to count the length of a linked list
+
+int countLength(DLLNode* lp)
+{
+    if(isEmpty(lp))
+    {
+        return 0;
+    }
+    else
+    {
+        int i = 1;
+        DLLNode* temp = lp;
+        while(temp->next)
+        {
+            temp=(DLLNode*)temp->next;
+            i++;
+        }
+        return i;
+    }
+}
+
 //Adds Payload (for us, a Marker) to the end of the list
 //Note:  If the list is empty, it merely changes the Payload field of the NULL node
 //to the Payload value passed in (by reference with a pointer)

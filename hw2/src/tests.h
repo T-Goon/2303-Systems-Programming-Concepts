@@ -19,7 +19,8 @@ bool testPlaceMarker();
 bool testEmptyLinkedList();
 bool testAddToLinkedList();
 bool testDisplaySpace();
-bool testMoveMarker();
 bool testBoardIsFull();
-
+bool testMoveMarker1();
+bool testMoveMarker2();
+bool testMoveMarker3();
 #endif /* TESTS_H_ */

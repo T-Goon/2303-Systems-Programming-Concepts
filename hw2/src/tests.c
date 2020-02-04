@@ -25,30 +25,66 @@ bool tests()
 	bool ok6 = testDisplaySpace();
     printf("display space test pass: %d\n", ok6);
   
-    bool ok7 = testMoveMarker();
+    bool ok7 = testMoveMarker1();
     printf("move marker test pass: %d\n", ok7);
+
+    bool ok8 = testMoveMarker2();
+    printf("move marker test pass: %d\n", ok8);
+
+    bool ok9 = testMoveMarker3();
+    printf("move marker test pass: %d\n", ok9);
 
     /*TODO Test that the list you produce matches the list your code prints.
     There should be several test cases. Length zero, length 1, length greater than 1.*/
 
-	answer = ok3 && ok4 && ok5 && ok6;
+	answer = ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9;
 
 	return answer;
 }
 
 
 /// Tests moveMarker() in production.c.
-bool testMoveMarker()
+bool testMoveMarker1()
 {
     //TODO a test function that checks the length of your marker path.
     bool ans = false;
     int boardSize = 20;
+    int numMarkers = 0;
     int* board = (int*) malloc(boardSize*boardSize*sizeof(int));
     initSpace(board, boardSize);
     DLLNode* head = makeEmptyLinkedList();
-    moveMarker(board, boardSize, 21, head);
+    moveMarker(board, boardSize, numMarkers, head);
+    ans = (numMarkers == countLength(head));
     return ans;
 }
+bool testMoveMarker2()
+{
+    //TODO a test function that checks the length of your marker path.
+    bool ans = false;
+    int boardSize = 20;
+    int numMarkers = 1;
+    int* board = (int*) malloc(boardSize*boardSize*sizeof(int));
+    initSpace(board, boardSize);
+    DLLNode* head = makeEmptyLinkedList();
+    moveMarker(board, boardSize, numMarkers, head);
+    ans = (numMarkers == countLength(head));
+    return ans;
+}
+
+bool testMoveMarker3()
+{
+    //TODO a test function that checks the length of your marker path.
+    bool ans = false;
+    int boardSize = 20;
+    int numMarkers = 100;
+    int* board = (int*) malloc(boardSize*boardSize*sizeof(int));
+    initSpace(board, boardSize);
+    DLLNode* head = makeEmptyLinkedList();
+    moveMarker(board, boardSize, numMarkers, head);
+    ans = (numMarkers == countLength(head));
+    return ans;
+}
+
 
 /// Helper for testPlaceMarker(). Checks if 2 boards of a certain size contain all the same values.
 bool boardEquals(int* board1, int* board2, int size)
