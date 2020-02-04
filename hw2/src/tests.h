@@ -15,15 +15,10 @@
 #include "LinkedList.h"
 bool tests();
 
-bool testReadFile();
-bool testGotAdjacencyMatrix();
 bool testPlaceMarker();
 bool testEmptyLinkedList();
 bool testAddToLinkedList();
 bool testDisplaySpace();
-bool testMoveMarker1();
-bool testMoveMarker2();
-bool testMoveMarker3();
-int lengthOfList(DLLNode* lp);
+bool testMoveMarker();
 
 #endif /* TESTS_H_ */
