@@ -21,6 +21,9 @@ bool testPlaceMarker();
 bool testEmptyLinkedList();
 bool testAddToLinkedList();
 bool testDisplaySpace();
-bool testMoveMarker();
+bool testMoveMarker1();
+bool testMoveMarker2();
+bool testMoveMarker3();
+int lengthOfList(DLLNode* lp);
 
 #endif /* TESTS_H_ */

@@ -9,24 +9,20 @@
 #include "marker.h"
 #include "LinkedList.h"
 #include <time.h>
-DLLNode* moveMarker(int* board, int bSize, Marker* initialMarker, int numMarkers)
+DLLNode* moveMarker(int* board, int bSize, int numMarkers)
 {
     DLLNode* initialList = makeEmptyLinkedList();
-    savePayload(initialList, initialMarker);
     int row;
     int col;
-
     srand(time(0));
-    for (int i = 1; i < numMarkers; i++)
+    for (int i = 0; i < numMarkers; i++)
     {
         row = rand() % 20;
         col = rand() % 20;
         savePayload(initialList, placeMarker(board, bSize, row, col, i));
     }
-
-    printHistory(initialList);
     displaySpace(board, 20);
-
+    printHistory(initialList);
     return initialList;
 }
 

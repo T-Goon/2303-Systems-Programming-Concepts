@@ -24,13 +24,19 @@ bool tests()
 	bool ok6 = testDisplaySpace();
     printf("display space test pass: %d\n", ok6);
   
-    bool ok7 = testMoveMarker();
-    printf("move marker test pass: %d\n", ok7);
+    bool ok7 = testMoveMarker1();
+    printf("move marker test1 pass: %d\n", ok7);
+
+    bool ok8 = testMoveMarker2();
+    printf("move marker test2 pass: %d\n", ok8);
+
+    bool ok9 = testMoveMarker3();
+    printf("move marker test3 pass: %d\n", ok9);
 
     //TODO Test that the list you produce matches the list your code prints.
     //TODO There should be several test cases. Length zero, length 1, length greater than 1.
 
-	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7;
+	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9;
 
 	return answer;
 }
@@ -64,19 +70,64 @@ bool testGotAdjacencyMatrix()
 	return ans;
 }
 
+int lengthOfList(DLLNode* lp)
+{
+    int i = 1;
+    if(isEmpty(lp))
+    {
+        return 0;
+    }
+    else
+    {
+        DLLNode* temp = lp;
+        while(temp->next)
+        {
+            temp=(DLLNode*)temp->next;
+            i++;
+        }
+    }
+    return i;
+}
+
 /// Tests moveMarker() in production.c.
-bool testMoveMarker()
+//testing placing 100 markers
+bool testMoveMarker1()
 {
     //TODO a test function that checks the length of your marker path.
     bool ans = false;
     int boardSize = 20;
+    int numMarker = 100;
     int* board = (int*) malloc(boardSize*boardSize*sizeof(int));
     initSpace(board, boardSize);
-    Marker* m = placeMarker(board, boardSize, 0, 0, 0);
-    moveMarker(board, boardSize, m,21);
+    ans = (lengthOfList(moveMarker(board, boardSize, numMarker)) == numMarker);
     return ans;
 }
 
+//testing with no markers placed
+bool testMoveMarker2()
+{
+    //TODO a test function that checks the length of your marker path.
+    bool ans = false;
+    int boardSize = 20;
+    int numMarker = 0;
+    int* board = (int*) malloc(boardSize*boardSize*sizeof(int));
+    initSpace(board, boardSize);
+    ans = (lengthOfList(moveMarker(board, boardSize, numMarker)) == numMarker);
+    return ans;
+}
+
+//testing print history length of 1 (1 marker placed)
+bool testMoveMarker3()
+{
+    //TODO a test function that checks the length of your marker path.
+    bool ans = false;
+    int boardSize = 20;
+    int numMarker = 1;
+    int* board = (int*) malloc(boardSize*boardSize*sizeof(int));
+    initSpace(board, boardSize);
+    ans = (lengthOfList(moveMarker(board, boardSize, numMarker)) == numMarker);
+    return ans;
+}
 /// Helper for testPlaceMarker(). Checks if 2 boards of a certain size contain all the same values.
 bool boardEquals(int* board1, int* board2, int size)
 {

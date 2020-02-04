@@ -16,7 +16,7 @@
 
 #define FILENAMELENGTHALLOWANCE 50
 
-DLLNode* moveMarker(int* board, int bSize, Marker* initialMarker, int numMarkers);
+DLLNode* moveMarker(int* board, int bSize, int numMarkers);
 bool production(int argc, char* argv[]);
 
 
