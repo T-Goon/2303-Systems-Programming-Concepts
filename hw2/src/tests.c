@@ -11,6 +11,9 @@
 bool tests()
 {
 	bool answer = false;
+	bool ok1 = testBoardIsFull();
+	printf("test board is full pass: %d\n", ok1);
+
 	bool ok3 = testPlaceMarker();
     printf("place marker test pass: %d\n", ok3);
 
@@ -28,7 +31,7 @@ bool tests()
     /*TODO Test that the list you produce matches the list your code prints.
     There should be several test cases. Length zero, length 1, length greater than 1.*/
 
-	answer = ok3 && ok4 && ok5 && ok6 && ok7;
+	answer = ok3 && ok4 && ok5 && ok6;
 
 	return answer;
 }
@@ -42,7 +45,8 @@ bool testMoveMarker()
     int boardSize = 20;
     int* board = (int*) malloc(boardSize*boardSize*sizeof(int));
     initSpace(board, boardSize);
-    moveMarker(board, boardSize,21);
+    DLLNode* head = makeEmptyLinkedList();
+    moveMarker(board, boardSize, 21, head);
     return ans;
 }
 
@@ -163,6 +167,27 @@ bool testDisplaySpace(){
     }
 
     displaySpace(board, boardsize);
+
+    return ans;
+}
+
+bool testBoardIsFull(){
+    bool ans = true;
+    int boardSize = 20;
+    // empty board test
+    // Should return false
+    int* board = (int*)malloc(boardSize*boardSize* sizeof(int));
+    initSpace(board, boardSize);
+    ans = ans && !isFull(board, boardSize);
+
+    // Fill board with 1s
+    for(int i=0; i<boardSize; i++){
+        for(int j=0; j<boardSize;j++){
+            *(board + i*boardSize + j) = 1;
+        }
+    }
+
+    ans = ans && isFull(board, boardSize);
 
     return ans;
 }

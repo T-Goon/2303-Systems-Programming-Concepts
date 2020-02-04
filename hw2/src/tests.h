@@ -20,5 +20,6 @@ bool testEmptyLinkedList();
 bool testAddToLinkedList();
 bool testDisplaySpace();
 bool testMoveMarker();
+bool testBoardIsFull();
 
 #endif /* TESTS_H_ */

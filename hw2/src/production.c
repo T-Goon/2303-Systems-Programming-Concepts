@@ -9,9 +9,9 @@
 #include "marker.h"
 #include "LinkedList.h"
 #include <time.h>
-DLLNode* moveMarker(int* board, int bSize, int numMarkers)
+DLLNode* moveMarker(int* board, int bSize, int numMarkers, DLLNode* listHead)
 {
-    DLLNode* initialList = makeEmptyLinkedList();
+    DLLNode* initialList = listHead;
     int row;
     int col;
 
@@ -108,14 +108,18 @@ bool production(int argc, char* argv[])
 	int boardSize = 20;
 	int* theSpaceP = (int*) malloc(boardSize*boardSize*sizeof(int));
     bool okInit = initSpace(theSpaceP, boardSize);
-
-    DLLNode* head = moveMarker(theSpaceP, boardSize, 15);
+    DLLNode* head = makeEmptyLinkedList();
+    head = moveMarker(theSpaceP, boardSize, 15, head);
 
     //TODO Print, from the linked list the path the marker takes through the space.
     printHistory(head);
 
     //TODO Finally, find a way to run it until all the cells get hit.
+    boardSize = 10;
+    initSpace(theSpaceP, boardSize);
+    while(!isFull(theSpaceP, boardSize)){
 
+    }
 
 	return answer;
 }

@@ -23,18 +23,37 @@ bool initSpace(int* corner, int howManyRows)
 	return ok;
 }
 
+/// Checks if the board if full.
+/// board: pointer to 2D array
+/// bSize: size length of square board.
+/// return: true if the board contains no 0s.
+///         false otherwise.
+bool isFull(int* board, int bSize){
+    for(int i=0; i<bSize; i++){
+        for(int j=0; j<bSize; j++){
+            if (*(board + i*bSize + j) == 0){
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 /// Prints the board to the console.
 /// board: pointer to square 2D array
 /// size: side length of square board
 void displaySpace(int* board, int size){
 
+
     for(int i=0; i<size; i++){
+        printf("| ");
         for(int j=0; j<size; j++){
             int num = *(board + i*size + j);
 
             printf("%x | ", num == -1 ? 10 : num%10);
         }
-        printf("\n");
+        printf("\n  ");
         for(int j=0; j<size; j++){
             printf("-   ");
         }

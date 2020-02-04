@@ -11,6 +11,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 bool initSpace(int* corner, int howManyRows);
+bool isFull(int* board, int bSize);
 
 void displaySpace(int* board, int size);
 
