@@ -18,13 +18,10 @@ DLLNode* moveMarker(int* board, int bSize, int numMarkers, DLLNode* listHead)
     srand(time(0));
     for (int i = 0; i < numMarkers; i++)
     {
-        row = rand() % 20;
-        col = rand() % 20;
+        row = rand() % bSize;
+        col = rand() % bSize;
         savePayload(initialList, placeMarker(board, bSize, row, col, i));
     }
-
-    printHistory(initialList);
-    displaySpace(board, bSize);
 
     return initialList;
 }
@@ -111,15 +108,20 @@ bool production(int argc, char* argv[])
     DLLNode* head = makeEmptyLinkedList();
     head = moveMarker(theSpaceP, boardSize, 15, head);
 
-    //TODO Print, from the linked list the path the marker takes through the space.
     printHistory(head);
 
-    //TODO Finally, find a way to run it until all the cells get hit.
-    boardSize = 10;
+    // resize the board smaller
+    boardSize = 5;
+    // reset the board and list
     initSpace(theSpaceP, boardSize);
-    while(!isFull(theSpaceP, boardSize)){
+    head = makeEmptyLinkedList();
 
+    // keep adding to the board until it is full
+    while(!isFull(theSpaceP, boardSize)){
+        head = moveMarker(theSpaceP, boardSize, 5, head);
     }
+
+    displaySpace(theSpaceP, boardSize);
 
 	return answer;
 }
