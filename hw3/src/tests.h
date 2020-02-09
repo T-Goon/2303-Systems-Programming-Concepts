@@ -14,7 +14,7 @@ bool tests();
 
 bool testReadFile();
 bool testGotAdjacencyMatrix();
-bool testSomethingElse();
+bool testCreateRoomList();
 bool testRemoveFromList();
 
 

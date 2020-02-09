@@ -14,12 +14,14 @@ bool tests()
 {
 	bool answer = false;
 	bool ok1 =  testReadFile();
-	printf("Test Read File Pass: %d\n", ok1);
+	printf("Test Read File Pass: %d\n\n", ok1);
 
 	bool ok2 = testGotAdjacencyMatrix();
-	printf("Test Got Adjacency Matrix Pass: %d\n", ok2);
+	printf("Test Got Adjacency Matrix Pass: %d\n\n", ok2);
 
-	bool ok3 = testSomethingElse();
+	bool ok3 = testCreateRoomList();
+	printf("Test Create Room List Pass: %d\n\n", ok3);
+
 	bool ok4 = testRemoveFromList();
 	answer = ok1 && ok2 && ok3 && ok4;
 	return answer;
@@ -41,7 +43,9 @@ bool testReadFile()
 
 bool testGotAdjacencyMatrix()
 {
+    puts("starting testGotAdjacencyMatrix");
 	bool ok = true;
+
 	// Test create the matrix from the file.
 	int* matrix = getMatrix();
 	ok = ok && matrix != NULL;
@@ -50,21 +54,30 @@ bool testGotAdjacencyMatrix()
     int* matrix2 = getMatrix();
     ok = ok && matrix == matrix2;
 
+    int numRooms = getNumRooms();
+
     // 2 values in matrix to make sure it is correct.
-    ok = ok && *(matrix + 11*12 + 10) == 1;
-    ok = ok && *(matrix + 2*12 + 6);
+    ok = ok && *(matrix + 11*numRooms + 10) == 1;
+    ok = ok && *(matrix + 2*numRooms + 6) == 1;
 
 	return ok;
 }
 
-bool testSomethingElse()
+bool testCreateRoomList()
 {
-	bool ans = true;
-	//what are the criteria for success for
-	//test case 1:
-	//test case 2:
+    puts("starting testCreateRoomList");
+	bool ok = true;
 
-	return ans;
+	// Test list has been created.
+	DLLNode* head = NULL;
+	head = createRoomsList();
+	ok = ok && head != NULL;
+
+	// Test list is correct length
+	int length = lengthDLL(head);
+	ok = ok && length == getNumRooms();
+
+	return ok;
 }
 bool testRemoveFromList()
 {

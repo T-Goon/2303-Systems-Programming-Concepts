@@ -11,14 +11,12 @@
 #include <stdbool.h>
 #include <string.h>//strncpy
 #include <stdlib.h>//strtol
-
-
-
+#include "LinkedList.h"
 
 #define FILENAMELENGTHALLOWANCE 50
 
 bool production(int argc, char* argv[]);
 
-
+DLLNode* createRoomsList();
 
 #endif /* PRODUCTION_H_ */

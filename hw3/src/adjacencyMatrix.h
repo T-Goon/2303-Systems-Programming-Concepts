@@ -11,4 +11,6 @@
 
 int* getMatrix();
 
+int getNumRooms();
+
 #endif //ADJACENCYMATRIX_H

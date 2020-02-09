@@ -15,14 +15,14 @@
 typedef struct
 {
 	int roomNum;       //number of room -- corresponds to rows/columns of adjacency matrix
-    char roomName[50]; //common room name
+    char* roomName; //common room name
     int numClues;      //number of clues to be found in the Room
     bool searched;     //true iff room has been searched
     bool discovered;   //true iff room is available to be searched--not searched but adjacent to a room that has been searched
 }Room;
 
 
-
+Room* makeRoom(int roomNum, char* roomName, int numClues);
 
 
 #endif /* MARKER_H_ */
