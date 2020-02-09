@@ -21,8 +21,10 @@ int main(int argc , char* argv[]) {
     //I neglected to mention this earlier this week.  (I did mention rather a lot.)
 
     int exitCode = 1;
-    if(tests())
+    if(tests()){
+        printf("Running Production.\n\n");
         exitCode = production(argc, argv);
+    }
     else
         printf("Tests did not pass!!!\n\n");
 
