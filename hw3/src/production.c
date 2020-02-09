@@ -6,7 +6,7 @@
  */
 #include "production.h"
 
-bool production()
+bool production(int argc, char* argv[])
 {  //You can consider this your real main() -- executed after tests() passes
    //If you wan the command line arguments version, you can look in
    //HW2 starter or other HW3 starter (morning section) on Canvas

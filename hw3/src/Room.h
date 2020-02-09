@@ -9,6 +9,7 @@
 #define ROOM_H_
 
 #include <stdbool.h>
+#include <stdlib.h>
 
 //Creates a struct called Room with five data fields
 typedef struct
