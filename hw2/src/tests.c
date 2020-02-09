@@ -34,10 +34,7 @@ bool tests()
     bool ok9 = testMoveMarker3();
     printf("move marker test pass: %d\n", ok9);
 
-    /*TODO Test that the list you produce matches the list your code prints.
-    There should be several test cases. Length zero, length 1, length greater than 1.*/
-
-	answer = ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9;
+	answer = ok1 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9;
 
 	return answer;
 }
@@ -46,7 +43,6 @@ bool tests()
 /// Tests moveMarker() in production.c.
 bool testMoveMarker1()
 {
-    //TODO a test function that checks the length of your marker path.
     bool ans = false;
     int boardSize = 20;
     int numMarkers = 0;
@@ -57,9 +53,9 @@ bool testMoveMarker1()
     ans = (numMarkers == countLength(head));
     return ans;
 }
+
 bool testMoveMarker2()
 {
-    //TODO a test function that checks the length of your marker path.
     bool ans = false;
     int boardSize = 20;
     int numMarkers = 1;
@@ -73,7 +69,6 @@ bool testMoveMarker2()
 
 bool testMoveMarker3()
 {
-    //TODO a test function that checks the length of your marker path.
     bool ans = false;
     int boardSize = 20;
     int numMarkers = 100;
