@@ -37,6 +37,7 @@ void production(int argc, char* argv[])
     head = moveMarker(theSpaceP, boardSize, 15, head);
 
     printHistory(head);
+    displaySpace(theSpaceP, boardSize);
 
     // resize the board smaller
     boardSize = 5;
