@@ -6,6 +6,44 @@
  */
 #include "production.h"
 
+
+DLLNode* toDoListHelper(int startRoom) {
+    //goal is to return the correct room as a DLLNode* so the breadth first search can work.
+    DLLNode* todoList = makeEmptyLinkedList();
+    DLLNode* roomList = createRoomsList();
+    DLLNode* temp = roomList;
+    while(temp) {
+        if (temp->RoomP->roomNum == startRoom) {
+            printf("\n%d", temp->RoomP->roomNum);
+            return temp;
+        }
+        else {
+            temp = (DLLNode *) temp->next;
+        }
+    }
+    printf("\n", "bad input");
+}
+
+DLLNode* toDoListCompleter (int* matrix, DLLNode* workingList, int numRooms) {
+    DLLNode* temp = workingList;
+    DLLNode* fullToDoList = makeEmptyLinkedList();
+    while(workingList) {
+        for(int i=0; i<numRooms; i++){
+            for(int j=0; j<numRooms; j++){
+                if (*(matrix + i*numRooms + j) == 1 && temp->RoomP->discovered == 0) {
+                    savePayload(fullToDoList, temp->RoomP);
+                    savePayload(workingList, temp);
+                    temp->RoomP->discovered = 1;
+                    removeFromList(workingList, temp);
+                }
+            }
+        }
+    }
+    printHistory(fullToDoList);
+    return fullToDoList;
+
+}
+
 // Creates a linked list of rooms.
 DLLNode* createRoomsList(){
     // Open file with room data and make new linked list.
@@ -38,11 +76,11 @@ bool production(int argc, char* argv[])
    //HW2 starter or other HW3 starter (morning section) on Canvas
    char breadth[20];
    int startingRoom = 0;
-    printf("Inspector Gompei:\n\tDo you want to do a through examination of the entire mansion, \n"
+    printf("Inspector Gompei:\n\tDo you want to do a thorough examination of the entire mansion, \n"
                               "\ta local search of a set number of rooms, or until you have found \n"
                               "\ta certain number of clues?(through/local/clues)\n\nAnswer: ");
     scanf("%s", breadth);
-    if(strcmp(breadth, "through") == 0){
+    if(strcmp(breadth, "thorough") == 0){
         printf("%s", breadth);
         //TODO search entire mansion
     }

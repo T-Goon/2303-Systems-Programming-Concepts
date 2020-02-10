@@ -13,9 +13,11 @@
 bool tests();
 
 bool testReadFile();
+void testToDoListHelper();
+void testToDoListCompleter();
 bool testGotAdjacencyMatrix();
 bool testCreateRoomList();
 bool testRemoveFromList();
-
+bool testRoomSearchFull();
 
 #endif /* TESTS_H_ */

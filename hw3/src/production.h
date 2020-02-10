@@ -15,6 +15,10 @@
 
 #define FILENAMELENGTHALLOWANCE 50
 
+DLLNode* toDoListHelper(int startRoom);
+
+DLLNode* toDoListCompleter(int* matrix, DLLNode* workingList, int numRooms);
+
 bool production(int argc, char* argv[]);
 
 DLLNode* createRoomsList();

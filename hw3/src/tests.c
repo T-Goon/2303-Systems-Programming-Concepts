@@ -23,6 +23,10 @@ bool tests()
 	printf("Test Create Room List Pass: %d\n\n", ok3);
 
 	bool ok4 = testRemoveFromList();
+    testToDoListHelper();
+    testToDoListCompleter();
+	//bool ok5 = testRoomSearchFull();
+	//printf("\n roomSearch pass: ", ok5);
 	answer = ok1 && ok2 && ok3 && ok4;
 	return answer;
 }
@@ -72,13 +76,40 @@ bool testCreateRoomList()
 	DLLNode* head = NULL;
 	head = createRoomsList();
 	ok = ok && head != NULL;
-
 	// Test list is correct length
 	int length = lengthDLL(head);
 	ok = ok && length == getNumRooms();
 
 	return ok;
 }
+
+void testToDoListHelper() {
+    toDoListHelper(2);
+}
+void testToDoListCompleter() {
+    toDoListCompleter(getMatrix(), toDoListHelper(2), 12);
+}
+/*
+bool testRoomSearchFull() {
+    int numRooms = 12;
+    int startRoom = 0;
+    int* matrix = getMatrix();
+    DLLNode* todoList = makeEmptyLinkedList();
+    DLLNode* roomList = createRoomsList();
+    DLLNode* temp = dequeueFIFO(roomList);
+    for (int i = 0; i < numRooms - 1; i++) {
+        if(temp->RoomP->roomNum == startRoom) {
+            savePayload(todoList, temp);
+        }
+        else {
+            temp = temp->next;
+        }
+    }
+    int numClues = roomSearchFull(matrix, startRoom, numRooms, todoList);
+    return (167 == numClues);
+}
+*/
+
 bool testRemoveFromList()
 {
 	bool ok = true;
