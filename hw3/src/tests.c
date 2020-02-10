@@ -87,7 +87,7 @@ void testToDoListHelper() {
     toDoListHelper(2);
 }
 void testToDoListCompleter() {
-    toDoListCompleter(getMatrix(), toDoListHelper(2), 12);
+    search(getMatrix(), toDoListHelper(2), 12);
 }
 /*
 bool testRoomSearchFull() {

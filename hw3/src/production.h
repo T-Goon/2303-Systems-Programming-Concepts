@@ -17,7 +17,7 @@
 
 DLLNode* toDoListHelper(int startRoom);
 
-DLLNode* toDoListCompleter(int* matrix, DLLNode* workingList, int numRooms);
+DLLNode* search(int* matrix, DLLNode* workingList, int numRooms);
 
 bool production(int argc, char* argv[]);
 

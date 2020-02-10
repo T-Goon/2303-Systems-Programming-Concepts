@@ -14,7 +14,6 @@ DLLNode* toDoListHelper(int startRoom) {
     DLLNode* temp = roomList;
     while(temp) {
         if (temp->RoomP->roomNum == startRoom) {
-            printf("\n%d", temp->RoomP->roomNum);
             return temp;
         }
         else {
@@ -24,23 +23,31 @@ DLLNode* toDoListHelper(int startRoom) {
     printf("\n", "bad input");
 }
 
-DLLNode* toDoListCompleter (int* matrix, DLLNode* workingList, int numRooms) {
-    DLLNode* temp = workingList;
-    DLLNode* fullToDoList = makeEmptyLinkedList();
-    while(workingList) {
-        for(int i=0; i<numRooms; i++){
-            for(int j=0; j<numRooms; j++){
-                if (*(matrix + i*numRooms + j) == 1 && temp->RoomP->discovered == 0) {
-                    savePayload(fullToDoList, temp->RoomP);
-                    savePayload(workingList, temp);
-                    temp->RoomP->discovered = 1;
-                    removeFromList(workingList, temp);
-                }
+DLLNode* search (int* matrix, DLLNode* workingList, int numRooms) {
+    int clues = 0;
+    DLLNode* queue = makeEmptyLinkedList();
+    DLLNode* visited = makeEmptyLinkedList();
+    workingList->RoomP->discovered = true;
+    savePayload(queue, workingList->RoomP);
+    savePayload(visited, workingList->RoomP);
+    DLLNode* tempList = makeEmptyLinkedList();
+    while(!isEmpty(queue)) {
+        printHistory(queue);
+        Payload* currentNode = dequeueFIFO(queue)->mp;
+        clues += currentNode->numClues;
+        savePayload(tempList, currentNode);
+        for (int j = 0; j < numRooms; j++) {
+            if (*(matrix + tempList->RoomP->roomNum * numRooms + j) == 1 && tempList->RoomP->discovered == 0) {
+                tempList->RoomP->discovered = true;
+                savePayload(queue, toDoListHelper(j)->RoomP);
+                printf("\n","Room Found: ");
+                printf("\n%d", toDoListHelper(j)->RoomP->roomNum);
             }
         }
+        tempList = dequeueLIFO(tempList);
     }
-    printHistory(fullToDoList);
-    return fullToDoList;
+    printf("\n",clues);
+    return queue;
 
 }
 
