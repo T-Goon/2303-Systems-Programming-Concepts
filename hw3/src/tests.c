@@ -94,12 +94,17 @@ bool testAllDiscovered() {
     return allDiscovered(createRoomsList());
 }
 
+// test to search all of the rooms
 bool testSearchFull() {
     return search(getMatrix(), 12, 0, INT_MAX, INT_MAX) == 167;
 }
+
+// test to search only 3 rooms
 bool testSearchRooms() {
     return search(getMatrix(), 12, 0, 3, INT_MAX) == 9;
 }
+
+// test to search until at least 9 clues have been found
 bool testSearchClues() {
     return search(getMatrix(), 12, 0, INT_MAX, 9) == 9;
 }

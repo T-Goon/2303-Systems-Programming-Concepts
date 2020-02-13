@@ -9,9 +9,6 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include "Room.h"
-#include "LinkedList.h"
 #include "tests.h"
 #include "production.h"
 
