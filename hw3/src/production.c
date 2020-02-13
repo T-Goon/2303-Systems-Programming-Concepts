@@ -99,8 +99,6 @@ int search (int* matrix, int numRooms, int startRoom, int roomLimit, int clueLim
         //prints history as it is built
         queue = (DLLNode *) queue->next;
     }
-
-
     return -1;
 }
 

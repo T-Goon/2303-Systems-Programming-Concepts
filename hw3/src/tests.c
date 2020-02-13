@@ -25,10 +25,15 @@ bool tests()
     bool ok5 = !testAllDiscovered();
     printf("Test all discovered pass: %d\n\n", ok5);
 
-    bool ok6 = testSearch();
-    printf("Test all discovered pass: %d\n\n", ok6);
+    bool ok6 = testSearchFull();
+    printf("Test all rooms searched pass: %d\n\n", ok6);
 
-	answer = ok1 && ok2 && ok3 && ok5 && ok6;
+    bool ok7 = testSearchRooms();
+    printf("Test 3 rooms searched pass: %d\n\n", ok7);
+
+    bool ok8 = testSearchClues();
+    printf("Test 9 clues discovered pass: %d\n\n", ok8);
+	answer = ok1 && ok2 && ok3 && ok5 && ok6 && ok7 && ok8;
 	return answer;
 }
 
@@ -89,8 +94,12 @@ bool testAllDiscovered() {
     return allDiscovered(createRoomsList());
 }
 
-bool testSearch() {
-    printf("%d\n", search(getMatrix(), 12, 0, 12, INT_MAX));
-    return search(getMatrix(), 12, 0, 12, INT_MAX) == 167;
+bool testSearchFull() {
+    return search(getMatrix(), 12, 0, INT_MAX, INT_MAX) == 167;
 }
-
+bool testSearchRooms() {
+    return search(getMatrix(), 12, 0, 3, INT_MAX) == 9;
+}
+bool testSearchClues() {
+    return search(getMatrix(), 12, 0, INT_MAX, 9) == 9;
+}

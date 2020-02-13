@@ -14,11 +14,10 @@ bool tests();
 
 bool testReadFile();
 bool testAllDiscovered();
-bool testSearch();
-void testToDoListCompleter();
+bool testSearchFull();
+bool testSearchRooms();
+bool testSearchClues();
 bool testGotAdjacencyMatrix();
 bool testCreateRoomList();
-bool testRemoveFromList();
-bool testRoomSearchFull();
 
 #endif /* TESTS_H_ */
