@@ -15,9 +15,9 @@
 
 #define FILENAMELENGTHALLOWANCE 50
 
-DLLNode* toDoListHelper(int startRoom);
+bool allDiscovered (DLLNode* rooms);
 
-DLLNode* search(int* matrix, DLLNode* workingList, int numRooms);
+int search(int* matrix, int numRooms, int startRoom);
 
 bool production(int argc, char* argv[]);
 

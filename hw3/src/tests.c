@@ -23,11 +23,12 @@ bool tests()
 	printf("Test Create Room List Pass: %d\n\n", ok3);
 
 	bool ok4 = testRemoveFromList();
-    testToDoListHelper();
-    testToDoListCompleter();
-	//bool ok5 = testRoomSearchFull();
-	//printf("\n roomSearch pass: ", ok5);
-	answer = ok1 && ok2 && ok3 && ok4;
+
+    bool ok5 = !testAllDiscovered();
+    printf("Test all discovered pass: %d\n\n", ok5);
+    bool ok6 = testSearch();
+    printf("Test all discovered pass: %d\n\n", ok6);
+	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6;
 	return answer;
 }
 
@@ -83,32 +84,15 @@ bool testCreateRoomList()
 	return ok;
 }
 
-void testToDoListHelper() {
-    toDoListHelper(2);
+
+bool testAllDiscovered() {
+    return allDiscovered(createRoomsList());
 }
-void testToDoListCompleter() {
-    search(getMatrix(), toDoListHelper(2), 12);
+
+bool testSearch() {
+    printf("%d\n", search(getMatrix(), 12, 0));
+    return search(getMatrix(), 12, 0) == 167;
 }
-/*
-bool testRoomSearchFull() {
-    int numRooms = 12;
-    int startRoom = 0;
-    int* matrix = getMatrix();
-    DLLNode* todoList = makeEmptyLinkedList();
-    DLLNode* roomList = createRoomsList();
-    DLLNode* temp = dequeueFIFO(roomList);
-    for (int i = 0; i < numRooms - 1; i++) {
-        if(temp->RoomP->roomNum == startRoom) {
-            savePayload(todoList, temp);
-        }
-        else {
-            temp = temp->next;
-        }
-    }
-    int numClues = roomSearchFull(matrix, startRoom, numRooms, todoList);
-    return (167 == numClues);
-}
-*/
 
 bool testRemoveFromList()
 {

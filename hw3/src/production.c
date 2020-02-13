@@ -6,49 +6,90 @@
  */
 #include "production.h"
 
-
-DLLNode* toDoListHelper(int startRoom) {
-    //goal is to return the correct room as a DLLNode* so the breadth first search can work.
-    DLLNode* todoList = makeEmptyLinkedList();
-    DLLNode* roomList = createRoomsList();
-    DLLNode* temp = roomList;
-    while(temp) {
-        if (temp->RoomP->roomNum == startRoom) {
-            return temp;
-        }
-        else {
-            temp = (DLLNode *) temp->next;
+bool allDiscovered(DLLNode* rooms)
+{
+    if (rooms->RoomP->discovered == false) {
+        return false;
+    }
+    else {
+        while (rooms->next) {
+            printf("%d\n", rooms->RoomP->roomNum);
+            if (rooms->RoomP->discovered == false) {
+                return false;
+            }
+            rooms = (DLLNode *) rooms->next;
         }
     }
-    printf("\n", "bad input");
+    return true;
 }
 
-DLLNode* search (int* matrix, DLLNode* workingList, int numRooms) {
-    int clues = 0;
+int search (int* matrix, int numRooms, int startRoom)
+{
+    //initializing Lists and their heads
     DLLNode* queue = makeEmptyLinkedList();
-    DLLNode* visited = makeEmptyLinkedList();
-    workingList->RoomP->discovered = true;
-    savePayload(queue, workingList->RoomP);
-    savePayload(visited, workingList->RoomP);
-    DLLNode* tempList = makeEmptyLinkedList();
-    while(!isEmpty(queue)) {
-        printHistory(queue);
-        Payload* currentNode = dequeueFIFO(queue)->mp;
-        clues += currentNode->numClues;
-        savePayload(tempList, currentNode);
-        for (int j = 0; j < numRooms; j++) {
-            if (*(matrix + tempList->RoomP->roomNum * numRooms + j) == 1 && tempList->RoomP->discovered == 0) {
-                tempList->RoomP->discovered = true;
-                savePayload(queue, toDoListHelper(j)->RoomP);
-                printf("\n","Room Found: ");
-                printf("\n%d", toDoListHelper(j)->RoomP->roomNum);
-            }
+    DLLNode* printQueue = queue;
+    DLLNode* allRooms = createRoomsList();
+    DLLNode* allRoomsCopy = allRooms;
+    //return value
+    int clues = 0;
+    //searches the list for the startRoom room and appends it to the queue
+    while (allRooms)
+    {
+        if(allRooms->RoomP->roomNum == startRoom)
+        {
+            allRooms->RoomP->discovered = true;
+            savePayload(queue, allRooms->RoomP);
         }
-        tempList = dequeueLIFO(tempList);
+        allRooms = (DLLNode *) allRooms->next;
     }
-    printf("\n",clues);
-    return queue;
-
+    //resets allRooms to head
+    allRooms = allRoomsCopy;
+    //really big loop
+    //allDiscovered is a helper function which returns a bool
+    //false: not all rooms have been discovered, the queue can continue
+    //true: all rooms have been discovered, no more work needed
+    while (!allDiscovered(allRooms))
+    {
+        //This for loop handles
+        for (int i = 0; i < numRooms; i++)
+        {
+            //finds where in the adjacency matrix an addable room is
+            if (*(matrix + queue->RoomP->roomNum * numRooms + i) == 1)
+            {
+                //finds where the roomnum in allrooms matches the position in the adj matrix
+                while(allRooms)
+                {
+                    if (allRooms->RoomP->roomNum == i && allRooms->RoomP->discovered == false)
+                    {
+                        //used for testing
+                        printf( "%s\n","Added to queue");
+                        //saves payload if its a new node
+                        savePayload(queue, allRooms->RoomP);
+                        allRooms->RoomP->discovered = true;
+                    }
+                    allRooms = (DLLNode *) allRooms->next;
+                }
+            }
+            //reset allRooms to head
+            allRooms = allRoomsCopy;
+        }
+        //prints history as it is built
+        printHistory(queue);
+        queue = (DLLNode *) queue->next;
+    }
+    //resets to head for counting
+    queue = printQueue;
+    //
+    while(queue) {
+        clues += queue->RoomP->numClues;
+        queue->RoomP->searched = true;
+        queue = (DLLNode *) queue->next;
+    }
+    //resets head for printing
+    queue = printQueue;
+    printHistory(queue);
+    //returns total clues
+    return clues;
 }
 
 // Creates a linked list of rooms.

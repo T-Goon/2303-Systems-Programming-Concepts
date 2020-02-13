@@ -13,7 +13,8 @@
 bool tests();
 
 bool testReadFile();
-void testToDoListHelper();
+bool testAllDiscovered();
+bool testSearch();
 void testToDoListCompleter();
 bool testGotAdjacencyMatrix();
 bool testCreateRoomList();
