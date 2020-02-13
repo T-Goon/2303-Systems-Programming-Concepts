@@ -62,7 +62,7 @@ int search (int* matrix, int numRooms, int startRoom)
                     if (allRooms->RoomP->roomNum == i && allRooms->RoomP->discovered == false)
                     {
                         //used for testing
-                        printf( "%s\n","Added to queue");
+                        //printf( "%s\n","Added to queue");
                         //saves payload if its a new node
                         savePayload(queue, allRooms->RoomP);
                         allRooms->RoomP->discovered = true;
@@ -156,6 +156,8 @@ bool production(int argc, char* argv[])
     printf("Inspector Gompei:\n\tWhere do you want to start your search?(RoomNumber 0-11)"
            "\n\nAnswer: ");
     scanf("%d", &startingRoom);
+
+
 
 
 	return 0;

@@ -12,7 +12,7 @@ Room* makeRoom(int roomNum, char* roomName, int numClues){
     Room* room = (Room*)calloc(1, sizeof(Room));
 
     room->roomNum = roomNum;
-    room->roomName = roomName;
+    room->roomName = strdup(roomName);
     room->numClues = numClues;
     room->discovered = false;
     room->searched = false;

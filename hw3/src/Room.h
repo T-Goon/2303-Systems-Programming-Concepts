@@ -10,6 +10,7 @@
 
 #include <stdbool.h>
 #include <stdlib.h>
+#include <string.h>
 
 //Creates a struct called Room with five data fields
 typedef struct

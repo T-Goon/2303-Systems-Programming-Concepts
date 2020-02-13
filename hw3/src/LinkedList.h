@@ -14,8 +14,7 @@
 //Makes Payload a synonym for Marker, can be used anywhere Marker can--including declarations
 typedef Room Payload;
 
-struct DLLNode;
-typedef struct
+typedef struct DLLNode
 {
 	struct DLLNode* next;
 	struct DLLNode* prev;
