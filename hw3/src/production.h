@@ -11,6 +11,7 @@
 #include <stdbool.h>
 #include <string.h>//strncpy
 #include <stdlib.h>//strtol
+#include <limits.h>
 #include "LinkedList.h"
 #include "adjacencyMatrix.h"
 

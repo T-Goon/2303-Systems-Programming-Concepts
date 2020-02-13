@@ -13,7 +13,6 @@ bool allDiscovered(DLLNode* rooms)
     }
     else {
         while (rooms->next) {
-            printf("%d\n", rooms->RoomP->roomNum);
             if (rooms->RoomP->discovered == false) {
                 return false;
             }
@@ -65,17 +64,17 @@ int search (int* matrix, int numRooms, int startRoom, int roomLimit, int clueLim
                 {
                     if (allRooms->RoomP->roomNum == i && allRooms->RoomP->discovered == false)
                     {
-                        //used for testing
-                        //printf( "%s\n","Added to queue");
                         //saves payload if its a new node
                         if (numRoomsDiscovered == roomLimit) {
                             queue = printQueue;
                             printHistory(queue);
+                            fPrintHistory(queue);
                             return clues;
                         }
                         else if (clues >= clueLimit) {
                             queue = printQueue;
                             printHistory(queue);
+                            fPrintHistory(queue);
                             return clues;
                         }
                         numRoomsDiscovered++;
@@ -86,6 +85,7 @@ int search (int* matrix, int numRooms, int startRoom, int roomLimit, int clueLim
                         if(allDiscovered(allRoomsCopy)) {
                             queue = printQueue;
                             printHistory(queue);
+                            fPrintHistory(queue);
                             return clues;
                         }
 
@@ -99,17 +99,9 @@ int search (int* matrix, int numRooms, int startRoom, int roomLimit, int clueLim
         //prints history as it is built
         queue = (DLLNode *) queue->next;
     }
-    //resets to head for counting
-    queue = printQueue;
-    while(queue) {
-        queue->RoomP->searched = true;
-        queue = (DLLNode *) queue->next;
-    }
-    //resets head for printing
-    queue = printQueue;
-    fPrintHistory(queue);
-    //returns total clues
-    return clues;
+
+
+    return -1;
 }
 
 // Creates a linked list of rooms.
@@ -148,7 +140,7 @@ bool production(int argc, char* argv[])
     int clueLimit = INT_MAX;
     printf("Inspector Gompei:\n\tDo you want to do a thorough examination of the entire mansion, \n"
                               "\ta local search of a set number of rooms, or until you have found \n"
-                              "\ta certain number of clues?(through/local/clues)\n\nAnswer: ");
+                              "\ta certain number of clues?(thorough/local/clues)\n\nAnswer: ");
     scanf("%s", breadth);
     if(strcmp(breadth, "thorough") == 0){
         printf("%s", breadth);

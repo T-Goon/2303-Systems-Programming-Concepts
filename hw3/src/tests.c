@@ -22,13 +22,13 @@ bool tests()
 	bool ok3 = testCreateRoomList();
 	printf("Test Create Room List Pass: %d\n\n", ok3);
 
-	bool ok4 = testRemoveFromList();
-
     bool ok5 = !testAllDiscovered();
     printf("Test all discovered pass: %d\n\n", ok5);
+
     bool ok6 = testSearch();
     printf("Test all discovered pass: %d\n\n", ok6);
-	answer = ok1 && ok2 && ok3 && ok4 && ok5 && ok6;
+
+	answer = ok1 && ok2 && ok3 && ok5 && ok6;
 	return answer;
 }
 
@@ -94,12 +94,3 @@ bool testSearch() {
     return search(getMatrix(), 12, 0, 12, INT_MAX) == 167;
 }
 
-bool testRemoveFromList()
-{
-	bool ok = true;
-	//what are the criteria for success for
-	//test case 1:
-	//test case 2:
-
-	return ok;
-}

@@ -188,8 +188,9 @@ void printHistory(DLLNode* hp)
 void fPrintHistory(DLLNode* hp)
 {
     FILE* file = fopen("queue.txt", "w");
-    puts("Printing history");
-    if(hp->RoomP ==(Payload*)0)
+
+    puts("Printing history to file");
+    if(hp->RoomP == NULL)
     {
         puts("Empty list");
     }
@@ -218,6 +219,9 @@ void fPrintHistory(DLLNode* hp)
         fprintf(file, "The Room was number %d,  %s, with %d clues.\n", num, name, clues);
         temp=(DLLNode*)temp->next;
     }
+
+    fclose(file);
+
 }
 DLLNode* removeFromList(DLLNode* hP, Payload* pP)
 {

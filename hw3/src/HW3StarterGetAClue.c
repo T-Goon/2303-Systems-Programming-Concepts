@@ -22,7 +22,8 @@ int main(int argc , char* argv[]) {
 
     int exitCode = 1;
     if(tests()){
-        printf("Running Production.\n\n");
+        printf("All Tests Passed. Running Production.\n"
+               "----------------------------------------------------------------------------\n\n");
         exitCode = production(argc, argv);
     }
     else
