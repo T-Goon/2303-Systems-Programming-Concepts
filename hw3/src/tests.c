@@ -90,8 +90,8 @@ bool testAllDiscovered() {
 }
 
 bool testSearch() {
-    printf("%d\n", search(getMatrix(), 12, 0));
-    return search(getMatrix(), 12, 0) == 167;
+    printf("%d\n", search(getMatrix(), 12, 0, 12, INT_MAX));
+    return search(getMatrix(), 12, 0, 12, INT_MAX) == 167;
 }
 
 bool testRemoveFromList()

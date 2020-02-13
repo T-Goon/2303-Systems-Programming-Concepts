@@ -37,5 +37,6 @@ bool isEmpty(DLLNode* lp);
 Payload* dequeueLIFO(DLLNode* lp);
 backFromDQFIFO* dequeueFIFO(DLLNode* lp);
 void printHistory(DLLNode* hp);
+void fPrintHistory(DLLNode* hp);
 
 #endif /* LINKEDLIST_H_ */

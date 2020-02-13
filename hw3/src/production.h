@@ -12,12 +12,13 @@
 #include <string.h>//strncpy
 #include <stdlib.h>//strtol
 #include "LinkedList.h"
+#include "adjacencyMatrix.h"
 
 #define FILENAMELENGTHALLOWANCE 50
 
 bool allDiscovered (DLLNode* rooms);
 
-int search(int* matrix, int numRooms, int startRoom);
+int search(int* matrix, int numRooms, int startRoom, int roomLimit, int clueLimit);
 
 bool production(int argc, char* argv[]);
 

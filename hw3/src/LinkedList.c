@@ -185,6 +185,40 @@ void printHistory(DLLNode* hp)
 	}
 }
 
+void fPrintHistory(DLLNode* hp)
+{
+    FILE* file = fopen("queue.txt", "w");
+    puts("Printing history");
+    if(hp->RoomP ==(Payload*)0)
+    {
+        puts("Empty list");
+    }
+    else
+    {
+        //traverse the list, printing as we go
+
+        DLLNode* temp = hp;
+        while(temp->next)
+        {
+            //room =temp->payP->roomNumber;
+            //treasureSubtotal+= temp->payP->treasure;
+            int num = temp->RoomP->roomNum;
+            char* name = temp->RoomP->roomName;
+            int clues = temp->RoomP->numClues;
+            fprintf(file, "The Room was number %d,  %s, with %d clues.\n", num, name, clues);
+            temp=(DLLNode*)temp->next;
+
+        }
+        //room =temp->payP->roomNumber;
+        // treasureSubtotal+= temp->payP->treasure;
+        // printf("The room was %d, and the treasure subtotal was %f.\n", room, treasureSubtotal);
+        int num = temp->RoomP->roomNum;
+        char* name = temp->RoomP->roomName;
+        int clues = temp->RoomP->numClues;
+        fprintf(file, "The Room was number %d,  %s, with %d clues.\n", num, name, clues);
+        temp=(DLLNode*)temp->next;
+    }
+}
 DLLNode* removeFromList(DLLNode* hP, Payload* pP)
 {
 	DLLNode* retHead = hP;//only changes if first element gets removed
