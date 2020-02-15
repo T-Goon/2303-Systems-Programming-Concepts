@@ -7,13 +7,16 @@
 //============================================================================
 
 #include <iostream>
+#include <stdio.h>
 using namespace std;
 #include "Tests.h"
 #include "Production.h"
 
 int main(int argc, char* argv[]) {
 	cout << "!!!Hello World,  we are on HW4!!!" << endl; // prints !!!Hello World!!!
+
 	Tests* tsP = new Tests();
+
 	if(tsP->tests())
 	{
         Production* pP = new Production();
@@ -28,5 +31,6 @@ int main(int argc, char* argv[]) {
 		cout <<"Not all tests passed." << endl;
 	}
 	delete(tsP);
+
 	return 0;
 }

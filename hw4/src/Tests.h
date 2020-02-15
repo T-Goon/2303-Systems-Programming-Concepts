@@ -13,6 +13,7 @@ public:
 	Tests();
 	virtual ~Tests();
 	bool tests();
+
 };
 
 #endif /* TESTS_H_ */
