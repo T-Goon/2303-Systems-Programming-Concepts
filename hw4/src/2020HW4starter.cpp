@@ -19,6 +19,8 @@ int main(int argc, char* argv[]) {
 
 	if(tsP->tests())
 	{
+	    printf("Tests Passed. Running Production.\n"
+            "----------------------------------------------------------------------\n");
         Production* pP = new Production();
         if(pP->prod(argc, argv))
         {

@@ -8,6 +8,7 @@
 #include "Tests.h"
 #include "Room.h"
 #include "LinkedList.h"
+#include "AdjacencyMatrix.h"
 
 Tests::Tests() {
 	// TODO Auto-generated constructor stub
@@ -26,6 +27,9 @@ bool Tests::tests()
 
 	answer &= testLinkedList();
     printf("Test Linked List Pass: %d\n\n", answer);
+
+    answer &= testAdjacencyMatrix();
+    printf("Test Adjacency Matrix Pass: %d\n\n", answer);
 
 	return answer;
 }
@@ -59,7 +63,7 @@ bool Tests::testRoom(){
 
 // Tests for the Linked List object.
 bool Tests::testLinkedList() {
-    printf("Starting room test\n");
+    printf("Starting Linked List test\n");
     bool answer = true;
 
     auto list = new LinkedList();
@@ -90,6 +94,27 @@ bool Tests::testLinkedList() {
     list->fPrintHistory();
     FILE* file = fopen("history.txt", "r");
     answer &= file != nullptr;
+
+    return answer;
+}
+
+bool Tests::testAdjacencyMatrix() {
+    printf("Starting Adjacency Matrix test\n");
+    bool answer = true;
+
+    // Test object creation
+    auto matrix = new AdjacencyMatrix();
+    answer &= matrix != nullptr;
+
+    // Test matrix creation
+    answer &= matrix->getMatrix() != nullptr;
+
+    // Test getNumRooms()
+    FILE* file = fopen("adjacencyMatrix.txt", "r");
+    int numRooms;
+    fscanf(file, "%d", &numRooms);
+
+    answer &= matrix->getNumRooms() == numRooms;
 
     return answer;
 }

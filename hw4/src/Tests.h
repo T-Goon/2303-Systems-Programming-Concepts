@@ -17,6 +17,7 @@ public:
 private:
     bool testRoom();
     bool testLinkedList();
+    bool testAdjacencyMatrix();
 
 };
 
