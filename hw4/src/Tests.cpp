@@ -7,6 +7,7 @@
 
 #include "Tests.h"
 #include "Room.h"
+#include "LinkedList.h"
 
 Tests::Tests() {
 	// TODO Auto-generated constructor stub
@@ -21,7 +22,10 @@ bool Tests::tests()
 {
 	bool answer = true;
 	answer &= testRoom();
-	printf("Test Room Pass: %d\n", answer);
+	printf("Test Room Pass: %d\n\n", answer);
+
+	answer &= testLinkedList();
+    printf("Test Linked List Pass: %d\n\n", answer);
 
 	return answer;
 }
@@ -33,7 +37,7 @@ bool Tests::testRoom(){
 
     // Test Room creation
     std::string rName = "roomA";
-    Room* room = new Room(0, &rName, 22);
+    auto room = new Room(0, &rName, 22);
     answer &= room != nullptr;
 
     // Test getters
@@ -49,6 +53,43 @@ bool Tests::testRoom(){
     room->setSearched(true);
     answer &= room->getDiscovered();
     answer &= room->getSearched();
+
+    return answer;
+}
+
+// Tests for the Linked List object.
+bool Tests::testLinkedList() {
+    printf("Starting room test\n");
+    bool answer = true;
+
+    auto list = new LinkedList();
+    answer &= list != nullptr;
+
+    // Test isEmpty() and savePayload()
+    answer &= list->isEmpty();
+    std::string rName = "abc";
+    auto room = new Room(0, &rName, 12);
+    list->savePayload(room);
+    answer &= !list->isEmpty();
+
+    // Test getFirst() and get()
+    answer &= list->getFirst() == room;
+    answer &= list->get(0) == room;
+
+    // Test removeFromList() and dequeueFIFO()
+    answer &= list->removeFromList(room);
+    answer &= list->isEmpty();
+
+    list->savePayload(room);
+    answer &= list->dequeueFIFO() == room;
+
+    list->savePayload(room);
+
+    // Test printHistory() and fprintHistory()
+    list->printHistory();
+    list->fPrintHistory();
+    FILE* file = fopen("history.txt", "r");
+    answer &= file != nullptr;
 
     return answer;
 }

@@ -16,6 +16,7 @@ public:
 
 private:
     bool testRoom();
+    bool testLinkedList();
 
 };
 
