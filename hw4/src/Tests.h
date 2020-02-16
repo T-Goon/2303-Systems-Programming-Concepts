@@ -14,6 +14,9 @@ public:
 	virtual ~Tests();
 	bool tests();
 
+private:
+    bool testRoom();
+
 };
 
 #endif /* TESTS_H_ */

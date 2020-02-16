@@ -1,5 +1,5 @@
 //
-// Created by Buddy on 2/15/2020.
+// Created by Timothy Goon, Patrick Houlihan on 2/15/2020.
 //
 
 #include "Room.h"
@@ -19,6 +19,11 @@ int Room::getRoomNum(){
 // Getter for _RoomName
 std::string* Room::getRoomName(){
     return _roomName;
+}
+
+// Getter for _numClues
+int Room::getNumClues() {
+    return _numClues;
 }
 
 // Getter for _searched

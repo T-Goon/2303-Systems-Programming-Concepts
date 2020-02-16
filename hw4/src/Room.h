@@ -1,5 +1,5 @@
 //
-// Created by Buddy on 2/15/2020.
+// Created by Timothy Goon, Patrick Houlihan on 2/15/2020.
 //
 
 #ifndef ROOM_H
@@ -13,7 +13,7 @@ public:
 
     int getRoomNum();
     std::string* getRoomName();
-    int getNumClues;
+    int getNumClues();
 
     bool getSearched();
     void setSearched(bool s);
