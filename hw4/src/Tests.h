@@ -8,16 +8,20 @@
 #ifndef TESTS_H_
 #define TESTS_H_
 
+#include "Room.h"
+#include "LinkedList.h"
+#include "AdjacencyMatrix.h"
+#include "Production.h"
+
 class Tests {
 public:
-	Tests();
-	virtual ~Tests();
-	bool tests();
+	static bool tests();
 
 private:
-    bool testRoom();
-    bool testLinkedList();
-    bool testAdjacencyMatrix();
+    static bool testRoom();
+    static bool testLinkedList();
+    static bool testAdjacencyMatrix();
+    static bool testCreateRoomsList();
 
 };
 

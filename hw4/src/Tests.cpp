@@ -6,18 +6,6 @@
  */
 
 #include "Tests.h"
-#include "Room.h"
-#include "LinkedList.h"
-#include "AdjacencyMatrix.h"
-
-Tests::Tests() {
-	// TODO Auto-generated constructor stub
-
-}
-
-Tests::~Tests() {
-	// TODO Auto-generated destructor stub
-}
 
 bool Tests::tests()
 {
@@ -30,6 +18,9 @@ bool Tests::tests()
 
     answer &= testAdjacencyMatrix();
     printf("Test Adjacency Matrix Pass: %d\n\n", answer);
+
+    answer &= testCreateRoomsList();
+    printf("Test Create Rooms List Pass: %d\n\n", answer);
 
 	return answer;
 }
@@ -89,6 +80,9 @@ bool Tests::testLinkedList() {
 
     list->savePayload(room);
 
+    // Test linked list size
+    answer &= list->size() == 1;
+
     // Test printHistory() and fprintHistory()
     list->printHistory();
     list->fPrintHistory();
@@ -98,6 +92,7 @@ bool Tests::testLinkedList() {
     return answer;
 }
 
+// Tests the AdjacencyMatrix object.
 bool Tests::testAdjacencyMatrix() {
     printf("Starting Adjacency Matrix test\n");
     bool answer = true;
@@ -115,6 +110,23 @@ bool Tests::testAdjacencyMatrix() {
     fscanf(file, "%d", &numRooms);
 
     answer &= matrix->getNumRooms() == numRooms;
+
+    return answer;
+}
+
+// Tests createRoomsList()
+bool Tests::testCreateRoomsList() {
+    printf("Starting Create Rooms List test\n");
+    bool answer = true;
+
+    LinkedList* list = Production::createRoomsList();
+    // Gets correct values from file
+    FILE* file = fopen("MansionRooms.txt", "r");
+    int numRooms;
+    fscanf(file, "%d", &numRooms);
+
+    answer &= list->size() == numRooms;
+    answer &= list->getFirst()->getNumClues() == 0;
 
     return answer;
 }
