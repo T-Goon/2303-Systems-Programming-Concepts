@@ -38,9 +38,11 @@ public:
     void printHistory();
     void fPrintHistory();
     Payload* dequeueFIFO();
+    int size();
 
 private:
     Node* _head;
+    int _size = 0;
 
 };
 

@@ -9,6 +9,11 @@ LinkedList::Node::Node(){
 
 }
 
+// Returns the size of the linked list.
+int LinkedList::size(){
+    return _size;
+}
+
 // Used to set the next Node of a linked list node.
 void LinkedList::Node::setNext(class Node* node) {
     _next = node;
@@ -94,6 +99,7 @@ bool LinkedList::removeFromList(Payload* payload) {
             _head->setPrev(nullptr);
         }
 
+        _size--;
         return true;
     }// Node to remove is in middle of list
     else{
@@ -106,6 +112,7 @@ bool LinkedList::removeFromList(Payload* payload) {
             next->setPrev(prev);
         }
 
+        _size--;
         return true;
     }
 }
@@ -114,6 +121,7 @@ bool LinkedList::removeFromList(Payload* payload) {
 void LinkedList::savePayload(Payload * payload) {
     if(isEmpty()){
         _head->setPayload(payload);
+        _size++;
         return;
     }
 
@@ -128,6 +136,7 @@ void LinkedList::savePayload(Payload * payload) {
     current->setNext(newNode);
     newNode->setPrev(current);
     newNode->setPayload(payload);
+    _size++;
 }
 
 // Checks if the linked list is empty.
@@ -187,18 +196,20 @@ void LinkedList::fPrintHistory() {
 Payload* LinkedList::dequeueFIFO() {
     if(isEmpty()){
         return nullptr;
-    }
+    } // List of size 1
     else if(_head->getNext() == nullptr){
         Payload* deqed = _head->getPayload();
         _head->setPayload(nullptr);
 
+        _size--;
         return deqed;
     }
-    else{
+    else{ // List greater than size 1
         Payload* deqed = _head->getPayload();
         _head = _head->getNext();
         _head->setPrev(nullptr);
 
+        _size--;
         return deqed;
     }
 }
