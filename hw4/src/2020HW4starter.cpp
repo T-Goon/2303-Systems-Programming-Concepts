@@ -7,32 +7,26 @@
 //============================================================================
 
 #include <iostream>
-#include <stdio.h>
+#include <cstdio>
 using namespace std;
 #include "Tests.h"
 #include "Production.h"
 
 int main(int argc, char* argv[]) {
-	cout << "!!!Hello World,  we are on HW4!!!" << endl; // prints !!!Hello World!!!
 
-	Tests* tsP = new Tests();
-
-	if(tsP->tests())
+	if(Tests::tests())
 	{
 	    printf("Tests Passed. Running Production.\n"
             "----------------------------------------------------------------------\n");
-        Production* pP = new Production();
-        if(pP->prod(argc, argv))
+        if(Production::prod(argc, argv))
         {
         	cout <<"Production passed." << endl;
         }
-        delete(pP);
 	}
 	else
 	{
 		cout <<"Not all tests passed." << endl;
 	}
-	delete(tsP);
 
 	return 0;
 }
