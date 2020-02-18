@@ -21,6 +21,11 @@ AdjacencyMatrix::AdjacencyMatrix(){
     fclose(file);
 }
 
+// Destructor for adjacencyMatrix
+AdjacencyMatrix::~AdjacencyMatrix() {
+    free(_matrix);
+}
+
 // Returns pointer to adjacency matrix.
 int* AdjacencyMatrix::getMatrix() {
     return _matrix;

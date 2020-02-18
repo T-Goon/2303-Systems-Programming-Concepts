@@ -5,8 +5,13 @@
 #include "LinkedList.h"
 
 // Constructor for a new node
-LinkedList::Node::Node(){
+LinkedList::Node::Node()= default;
 
+// Destructor for Node
+LinkedList::Node::~Node(){
+    free(_next);
+    free(_prev);
+    free(_payload);
 }
 
 // Returns the size of the linked list.
@@ -47,6 +52,11 @@ Payload* LinkedList::Node::getPayload() {
 // Linked list constructor.
 LinkedList::LinkedList(){
     _head = new Node();
+}
+
+// Destructor for Linked list
+LinkedList::~LinkedList(){
+    free(_head);
 }
 
 // Returns the payload of the head of the linked list.

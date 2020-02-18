@@ -10,6 +10,7 @@
 class Room {
 public:
     Room(int roomNum, std::string* roomName, int numClues);
+    ~Room();
 
     int getRoomNum();
     std::string* getRoomName();

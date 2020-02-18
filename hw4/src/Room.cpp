@@ -11,6 +11,11 @@ Room::Room(int roomNum, std::string* roomName, int numClues){
     _numClues = numClues;
 }
 
+// Destructor
+Room::~Room() {
+    free(_roomName);
+}
+
 // Getter for _RoomNum
 int Room::getRoomNum(){
     return _roomNum;

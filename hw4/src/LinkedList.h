@@ -15,6 +15,7 @@ private:
     class Node{
     public:
         Node();
+        ~Node();
         void setNext(Node* next);
         void setPrev(Node* prev);
         void setPayload(Payload* payload);
@@ -30,6 +31,7 @@ private:
 
 public:
     LinkedList();
+    ~LinkedList();
     Payload* getFirst();
     Payload* get(int index);
     bool removeFromList(Payload* payload);

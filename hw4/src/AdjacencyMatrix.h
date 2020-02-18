@@ -11,6 +11,7 @@
 class AdjacencyMatrix {
 public:
     AdjacencyMatrix();
+    ~AdjacencyMatrix();
     int* getMatrix();
     int getNumRooms();
 private:
