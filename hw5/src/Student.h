@@ -10,14 +10,12 @@
 
 #include <string>
 
-using namespace std;
-
 class Student {
 
 // Google style guide suggests trailing underscores for private members.
 private:
-    string first_;
-    string last_;
+    std::string first_;
+    std::string last_;
     float gpa_;
     int id_;
 
@@ -25,7 +23,7 @@ public:
     Student();
 
 	Student(
-	        const string &first_name, const string &last_name, float gpa, int id):
+	        const std::string &first_name, const std::string &last_name, float gpa, int id):
 	            first_(first_name), last_(last_name), gpa_(gpa), id_(id) { }
 
 
@@ -33,6 +31,10 @@ public:
 
 
 	virtual ~Student();
+	std::string full_name();
+	int id();
+	float gpa();
+	void print_info();
 };
 
 #endif /* STUDENT_H_ */
