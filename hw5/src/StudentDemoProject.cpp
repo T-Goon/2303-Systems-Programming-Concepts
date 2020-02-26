@@ -1,7 +1,7 @@
 //============================================================================
 // Name        : StudentDemoProject.cpp
-// Author      : me
-// Version     :
+// Author      : Timothy Goon, Patrick Houlihan
+// Version     : 1
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================
@@ -24,6 +24,13 @@ std::vector<Student> find_failing_students(const std::vector<Student> &students)
     return failing_students;
 }
 
+// Prints out the info for all the students in the vector
+void print_students(const std::vector<Student> &students){
+    for(auto student : students){
+        student.print_info();
+    }
+}
+
 /**
  * Allows the user to enter information for multiple students, then
  * find those students whose GPA is below 1.0 and prints them to the
@@ -37,6 +44,22 @@ int main() {
     char repeat;
     std::vector<Student> students;
 
+    // TODO
+    /*
+     * ADDITIONALLY
+1
+: Please add the Newsies textfile to this project and read
+them all in–this will facilitate grading for us.  That is, after the loop that
+allows data entry,  copy/paste the code that opens the data file,  reads it
+and closes it again.  IMPORTANT: also copy/paste the line that loads the
+newly-read Students into the students vector.  You might need to do a lit-
+tle editing on the scanf
+2
+arguments, or swap the newly-read data into the
+variables the vector push-back uses.  Just make sure the vector gets loaded
+with the 26 Newsies.  (You just ignore all the extra info.)  Again, this will
+help us grade things very quickly
+     */
     do {
 
         std::cout << "Enter student's first name: ";
@@ -57,11 +80,13 @@ int main() {
         std::cin >> repeat;
     } while (repeat == 'Y' || repeat == 'y');
 
+    printf("Students:\n");
+    print_students(students);
+
+    printf("\n");
     printf("Failing Students:\n");
     std::vector<Student> failing = find_failing_students(students);
-    for(auto student : failing){
-        student.print_info();
-    }
+    print_students(failing);
     printf("\n");
 
     return 0;
