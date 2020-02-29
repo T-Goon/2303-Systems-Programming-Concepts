@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cstdio>
 
 #include "Student.h"
 
@@ -43,23 +44,26 @@ int main() {
     int id;
     char repeat;
     std::vector<Student> students;
+    FILE* file = fopen("NewsiesStaff.txt", "r");
+    int numStudents;
+    fscanf(file, "%d", &numStudents);
 
-    // TODO
-    /*
-     * ADDITIONALLY
-1
-: Please add the Newsies textfile to this project and read
-them all in–this will facilitate grading for us.  That is, after the loop that
-allows data entry,  copy/paste the code that opens the data file,  reads it
-and closes it again.  IMPORTANT: also copy/paste the line that loads the
-newly-read Students into the students vector.  You might need to do a lit-
-tle editing on the scanf
-2
-arguments, or swap the newly-read data into the
-variables the vector push-back uses.  Just make sure the vector gets loaded
-with the 26 Newsies.  (You just ignore all the extra info.)  Again, this will
-help us grade things very quickly
-     */
+
+    char first[50];
+    char last[50]; float grade; int ID;
+    int temp1, temp2, temp3, temp4, temp5, temp6, temp7;
+    char temp8[50];
+    for(int i=0; i< numStudents; i++){
+
+        fscanf(file, "%s %s %f %d %d %d %d %d %d %d %d %s", first, last, &grade, &ID, &temp1, &temp2, &temp3, &temp4, &temp5, &temp6, &temp7, temp8);
+        std::string firstS = std::string(first);
+        std::string lastS = std::string(last);
+
+        students.emplace_back(Student(firstS, lastS, grade, ID));
+    }
+
+    fclose(file);
+
     do {
 
         std::cout << "Enter student's first name: ";
