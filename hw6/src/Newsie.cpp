@@ -39,6 +39,76 @@ Newsie::~Newsie(){
 
 }
 
+// getter for title
+position Newsie::getTitle(){
+    return title_;
+}
+
+// getter for primary
+article Newsie::getPrimary(){
+    return primary_;
+}
+
+// getter for secondary
+article Newsie::getSecondary(){
+    return secondary_;
+}
+
+// getter for tertiary
+article Newsie::getTertiary(){
+    return tertiary_;
+}
+
+// getter for term_goal
+int Newsie::getTerm_goal(){
+    return term_goal_;
+}
+
+// getter for term_count
+int Newsie::getTerm_count(){
+    return term_kount_;
+}
+
+// getter for terms
+int Newsie::getTerms(){
+    return terms_;
+}
+
+// getter for non_de_plume
+std::string Newsie::getNon_de_plume(){
+    return non_de_plume_;
+}
+
+// getter for current_priority
+Assignment* Newsie::getCurrent_priority(){
+    return current_priority_;
+}
+
+// getter for current_extra
+Assignment* Newsie::getCurrent_extra(){
+    return current_extra_;
+}
+
+// getter for current emergency
+Assignment* Newsie::getCurrent_emergency(){
+    return current_emergency_;
+}
+
+// setter for current_priority
+void Newsie::setCurrent_priority(Assignment* prio){
+    current_priority_ = prio;
+}
+
+// setter for current_extra
+void Newsie::setCurrent_extra(Assignment* prio){
+    current_extra_ = prio;
+}
+
+// setter for current_emergency
+void Newsie::setCurrent_emergency(Assignment* prio){
+    current_emergency_ = prio;
+}
+
 int main() {
 	puts("Some terminal and file I/O!"); /* prints !!!Hello World!!! */
 

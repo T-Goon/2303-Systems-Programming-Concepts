@@ -21,6 +21,24 @@ public:
 
     virtual ~Newsie();
 
+    position getTitle();
+    article getPrimary();
+    article getSecondary();
+    article getTertiary();
+
+    int getTerm_goal();
+    int getTerm_count();
+    int getTerms();
+
+    std::string getNon_de_plume();
+    Assignment* getCurrent_priority();
+    Assignment* getCurrent_extra();
+    Assignment* getCurrent_emergency();
+
+    void setCurrent_priority(Assignment* prio);
+    void setCurrent_extra(Assignment* prio);
+    void setCurrent_emergency(Assignment* prio);
+
 protected:
     position title_;
 
