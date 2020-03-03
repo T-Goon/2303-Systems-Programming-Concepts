@@ -9,6 +9,7 @@ Assignment::Assignment(article desk, std::string tempTitle){
     _desk = desk;
     _tempTitle = tempTitle;
     _assigned = false;
+    _assignedNewsie = nullptr;
 }
 
 // deconstructor
@@ -31,11 +32,20 @@ bool Assignment::getAssigned() {
     return _assigned;
 }
 
+// getter for assignedNewsie
+Student* Assignment::getAssignedNewsie() {
+    return _assignedNewsie;
+}
+
+// setter for assignedNewsie
+void Assignment::setAssignedNewsie(Student *newsie) {
+    _assignedNewsie = newsie;
+}
+
 // setter for assigned boolean
 void Assignment::setAssigned(bool assigned) {
     _assigned = assigned;
 }
-
 
 // prints out the info for the assignment
 void Assignment::print() {
