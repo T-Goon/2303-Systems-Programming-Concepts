@@ -6,6 +6,7 @@
  */
 
 #include "Production.h"
+#include "AdjacencyMatrix.h"
 
 // Creates a linked list of rooms.
 LinkedList* Production::createRoomsList(){
@@ -34,6 +35,60 @@ LinkedList* Production::createRoomsList(){
 
     return list;
 }
+bool allDiscovered(LinkedList* rooms)
+{
+    for(int i = 0; i <= rooms->size(); i++) {
+        if (!rooms->get(i)->getDiscovered()) {
+            return false;
+         }
+    }
+    return true;
+}
+
+int specificRoomSearch (LinkedList* roomList, int numRoom) {
+    for (int i = 0; i < roomList->size(); i++) {
+        if (roomList->get(i)->getRoomNum() == numRoom) {
+            return i;
+        }
+    }
+}
+
+int search (int numRooms, int startRoom, int roomLimit, int clueLimit)
+{
+    auto matrix = new AdjacencyMatrix();
+    int* matrixPointer = matrix->getMatrix();
+    auto queue = new LinkedList;
+    auto allRooms = Production::createRoomsList();
+    int clues = 0;
+    queue->savePayload(allRooms->get(specificRoomSearch(allRooms, startRoom)));
+    while (!queue->isEmpty())
+    {
+        allRooms->get(specificRoomSearch(allRooms, queue->getFirst()->getRoomNum()))->setDiscovered(true);
+        clues+= queue->getFirst()->getNumClues();
+        std::cout << clues << std::endl;
+        allRooms->get(specificRoomSearch(allRooms, queue->getFirst()->getRoomNum()))->setSearched(true);
+        for (int i = 0; i < numRooms; i++)
+        {
+            if ((*(matrixPointer + queue->getFirst()->getRoomNum() *allRooms->size() + i) == 1) &&
+                    !(allRooms->get(specificRoomSearch(allRooms, i)))->getDiscovered())
+
+            {
+                queue->savePayload(allRooms->get(specificRoomSearch(allRooms, i)));
+                allRooms->get(specificRoomSearch(allRooms, i))->setDiscovered(true);
+            }
+        }
+        queue->printHistory();
+        queue->dequeueFIFO();
+    }
+    return 1;
+}
+
+int getNumRooms() {
+    FILE* file = fopen("MansionRooms.txt", "r");
+    int numRooms;
+    fscanf(file,"%d", &numRooms);
+    return numRooms;
+}
 
 bool Production::prod(int argc, char* argv[])
 {
@@ -43,6 +98,7 @@ bool Production::prod(int argc, char* argv[])
     int startingRoom = 0;
     int numRooms = INT_MAX;
     int clueLimit = INT_MAX;
+    int totalRooms = getNumRooms();
     printf("Inspector Gompei:\n\tDo you want to do a thorough examination of the entire mansion, \n"
            "\ta local search of a set number of rooms, or until you have found \n"
            "\ta certain number of clues?(thorough/local/clues)\n\nAnswer: ");
@@ -72,7 +128,7 @@ bool Production::prod(int argc, char* argv[])
     printf("Inspector Gompei:\n\tWhere do you want to start your search?(RoomNumber 0-11)"
            "\n\nAnswer: ");
     scanf("%d", &startingRoom);
-
+    search(totalRooms, startingRoom, numRooms, clueLimit);
 
 	return answer;
 
