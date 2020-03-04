@@ -32,12 +32,12 @@ bool Tests::testRoom(){
 
     // Test Room creation
     std::string rName = "roomA";
-    auto room = new Room(0, &rName, 22);
+    auto room = new Room(0, rName, 22);
     answer &= room != nullptr;
 
     // Test getters
     answer &= room->getNumClues() == 22;
-    answer &= room->getRoomName() == &rName;
+    answer &= room->getRoomName() == rName;
     answer &= room->getRoomNum() == 0;
     // discovered and searched both initialized to false
     answer &= !room->getDiscovered();
@@ -63,7 +63,7 @@ bool Tests::testLinkedList() {
     // Test isEmpty() and savePayload()
     answer &= list->isEmpty();
     std::string rName = "abc";
-    auto room = new Room(0, &rName, 12);
+    auto room = new Room(0, rName, 12);
     list->savePayload(room);
     answer &= !list->isEmpty();
 

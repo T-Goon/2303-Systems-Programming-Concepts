@@ -28,7 +28,7 @@ LinkedList* Production::createRoomsList(){
         fscanf(file, "%d", &numClues);
 
         std::string name = roomName;
-        list->savePayload(new Room(roomNum, &name, numClues));
+        list->savePayload(new Room(roomNum, name, numClues));
     }
 
     fclose(file);
@@ -51,6 +51,7 @@ int specificRoomSearch (LinkedList* roomList, int numRoom) {
             return i;
         }
     }
+    return -1;
 }
 
 int search (int numRooms, int startRoom, int roomLimit, int clueLimit)
@@ -58,9 +59,11 @@ int search (int numRooms, int startRoom, int roomLimit, int clueLimit)
     auto matrix = new AdjacencyMatrix();
     int* matrixPointer = matrix->getMatrix();
     auto queue = new LinkedList;
+    auto printQueue = new LinkedList;
     auto allRooms = Production::createRoomsList();
     int clues = 0;
     queue->savePayload(allRooms->get(specificRoomSearch(allRooms, startRoom)));
+
     while (!queue->isEmpty())
     {
         allRooms->get(specificRoomSearch(allRooms, queue->getFirst()->getRoomNum()))->setDiscovered(true);
@@ -71,7 +74,6 @@ int search (int numRooms, int startRoom, int roomLimit, int clueLimit)
         {
             if ((*(matrixPointer + queue->getFirst()->getRoomNum() *allRooms->size() + i) == 1) &&
                     !(allRooms->get(specificRoomSearch(allRooms, i)))->getDiscovered())
-
             {
                 queue->savePayload(allRooms->get(specificRoomSearch(allRooms, i)));
                 allRooms->get(specificRoomSearch(allRooms, i))->setDiscovered(true);

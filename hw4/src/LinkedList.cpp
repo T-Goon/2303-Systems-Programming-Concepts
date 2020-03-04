@@ -166,7 +166,7 @@ void LinkedList::printHistory() {
     while(current != nullptr){
 
         int roomNum = current->getPayload()->getRoomNum();
-        std::string roomName = *current->getPayload()->getRoomName();
+        std::string roomName = current->getPayload()->getRoomName();
         int numClues = current->getPayload()->getNumClues();
 
         std::cout << "The Room was number " << roomNum << ", " << roomName << ", with "<<
@@ -190,7 +190,7 @@ void LinkedList::fPrintHistory() {
     while(current != nullptr){
 
         int roomNum = current->getPayload()->getRoomNum();
-        std::string roomName = *current->getPayload()->getRoomName();
+        std::string roomName = current->getPayload()->getRoomName();
         int numClues = current->getPayload()->getNumClues();
 
         fprintf(file, "The Room was number %d,  %s, with %d clues.\n", roomNum, roomName.c_str(), numClues);

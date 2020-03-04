@@ -9,11 +9,11 @@
 
 class Room {
 public:
-    Room(int roomNum, std::string* roomName, int numClues);
+    Room(int roomNum, std::string roomName, int numClues);
     ~Room();
 
     int getRoomNum();
-    std::string* getRoomName();
+    std::string getRoomName();
     int getNumClues();
 
     bool getSearched();
@@ -24,7 +24,7 @@ public:
 
 private:
     int _roomNum;
-    std::string* _roomName;
+    std::string _roomName;
     int _numClues;
     bool _searched = false;
     bool _discovered = false;

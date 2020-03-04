@@ -5,7 +5,7 @@
 #include "Room.h"
 
 // Constructor
-Room::Room(int roomNum, std::string* roomName, int numClues){
+Room::Room(int roomNum, std::string roomName, int numClues){
     _roomNum = roomNum;
     _roomName = roomName;
     _numClues = numClues;
@@ -13,7 +13,7 @@ Room::Room(int roomNum, std::string* roomName, int numClues){
 
 // Destructor
 Room::~Room() {
-    free(_roomName);
+
 }
 
 // Getter for _RoomNum
@@ -22,7 +22,7 @@ int Room::getRoomNum(){
 }
 
 // Getter for _RoomName
-std::string* Room::getRoomName(){
+std::string Room::getRoomName(){
     return _roomName;
 }
 
