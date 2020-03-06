@@ -22,6 +22,12 @@ bool Tests::tests()
     answer &= testCreateRoomsList();
     printf("Test Create Rooms List Pass: %d\n\n", answer);
 
+    answer &= Tests::testGetNumRooms();
+    printf("Test getNumRooms List Pass: %d\n\n", answer);
+
+    answer &= Tests::testSearch();
+    printf("Test Search Rooms List Pass: %d\n\n", answer);
+
 	return answer;
 }
 
@@ -129,4 +135,28 @@ bool Tests::testCreateRoomsList() {
     answer &= list->getFirst()->getNumClues() == 0;
 
     return answer;
+}
+
+bool Tests::testGetNumRooms() {
+    printf("Starting numRooms test\n");
+    std::cout << Production::getNumRooms();
+    return Production::getNumRooms() == 12;
+}
+
+bool Tests::testSearch() {
+    bool pass = true;
+    printf("Starting room search test\n");
+    if (Production::search(12, 0, INT_MAX, INT_MAX) != 167) {
+        std::cout << Production::search(12, 0, INT_MAX, INT_MAX)<< std::endl;
+        pass = false;
+    }
+    if (Production::search(12, 0, 3, INT_MAX) != 9) {
+        std::cout << Production::search(12, 0, 3, INT_MAX)<< std::endl;
+        pass = false;
+    }
+    if (Production::search(12, 0, INT_MAX, 9) != 9) {
+        std::cout << Production::search(12, 0, INT_MAX, 9)<< std::endl;
+        pass = false;
+    }
+    return pass;
 }

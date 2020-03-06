@@ -35,17 +35,8 @@ LinkedList* Production::createRoomsList(){
 
     return list;
 }
-bool allDiscovered(LinkedList* rooms)
-{
-    for(int i = 0; i <= rooms->size(); i++) {
-        if (!rooms->get(i)->getDiscovered()) {
-            return false;
-         }
-    }
-    return true;
-}
 
-int specificRoomSearch (LinkedList* roomList, int numRoom) {
+int Production::specificRoomSearch (LinkedList* roomList, int numRoom) {
     for (int i = 0; i < roomList->size(); i++) {
         if (roomList->get(i)->getRoomNum() == numRoom) {
             return i;
@@ -54,21 +45,33 @@ int specificRoomSearch (LinkedList* roomList, int numRoom) {
     return -1;
 }
 
-int search (int numRooms, int startRoom, int roomLimit, int clueLimit)
+int Production::search (int numRooms, int startRoom, int roomLimit, int clueLimit)
 {
     auto matrix = new AdjacencyMatrix();
     int* matrixPointer = matrix->getMatrix();
     auto queue = new LinkedList;
     auto printQueue = new LinkedList;
     auto allRooms = Production::createRoomsList();
+    int numRoomsDiscovered = 0;
     int clues = 0;
     queue->savePayload(allRooms->get(specificRoomSearch(allRooms, startRoom)));
-
+    numRoomsDiscovered++;
     while (!queue->isEmpty())
     {
         allRooms->get(specificRoomSearch(allRooms, queue->getFirst()->getRoomNum()))->setDiscovered(true);
         clues+= queue->getFirst()->getNumClues();
-        std::cout << clues << std::endl;
+        numRoomsDiscovered++;
+        printQueue->savePayload(allRooms->get(specificRoomSearch(allRooms, queue->getFirst()->getRoomNum())));
+        if (numRoomsDiscovered > roomLimit) {
+            printQueue->printHistory();
+            printQueue->fPrintHistory();
+            return clues;
+        }
+        if (clues >= clueLimit) {
+            printQueue->printHistory();
+            printQueue->fPrintHistory();
+            return clues;
+        }
         allRooms->get(specificRoomSearch(allRooms, queue->getFirst()->getRoomNum()))->setSearched(true);
         for (int i = 0; i < numRooms; i++)
         {
@@ -76,16 +79,18 @@ int search (int numRooms, int startRoom, int roomLimit, int clueLimit)
                     !(allRooms->get(specificRoomSearch(allRooms, i)))->getDiscovered())
             {
                 queue->savePayload(allRooms->get(specificRoomSearch(allRooms, i)));
+                //printQueue->savePayload(allRooms->get(specificRoomSearch(allRooms, i)));
                 allRooms->get(specificRoomSearch(allRooms, i))->setDiscovered(true);
             }
         }
-        queue->printHistory();
         queue->dequeueFIFO();
     }
-    return 1;
+    printQueue->printHistory();
+    printQueue->fPrintHistory();
+    return clues;
 }
 
-int getNumRooms() {
+int Production::getNumRooms() {
     FILE* file = fopen("MansionRooms.txt", "r");
     int numRooms;
     fscanf(file,"%d", &numRooms);
@@ -95,7 +100,6 @@ int getNumRooms() {
 bool Production::prod(int argc, char* argv[])
 {
 	bool answer = true;
-
     char breadth[20];
     int startingRoom = 0;
     int numRooms = INT_MAX;
@@ -131,7 +135,6 @@ bool Production::prod(int argc, char* argv[])
            "\n\nAnswer: ");
     scanf("%d", &startingRoom);
     search(totalRooms, startingRoom, numRooms, clueLimit);
-
 	return answer;
 
 }

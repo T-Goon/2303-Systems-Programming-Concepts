@@ -19,6 +19,9 @@ class Production {
 public:
 	static bool prod(int argc, char* argv[]);
     static LinkedList* createRoomsList();
+    static int search (int numRooms, int startRoom, int roomLimit, int clueLimit);
+    static int getNumRooms();
+    static int specificRoomSearch (LinkedList* roomList, int numRoom);
 };
 
 #endif /* PRODUCTION_H_ */

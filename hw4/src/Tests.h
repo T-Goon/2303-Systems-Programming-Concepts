@@ -22,7 +22,9 @@ private:
     static bool testLinkedList();
     static bool testAdjacencyMatrix();
     static bool testCreateRoomsList();
-
+    static bool testSearch();
+    static bool testSpecificRoom();
+    static bool testGetNumRooms();
 };
 
 #endif /* TESTS_H_ */
