@@ -46,17 +46,17 @@ position Newsie::getTitle(){
 
 // getter for primary
 article Newsie::getPrimary(){
-    return primary_;
+    return this->primary_;
 }
 
 // getter for secondary
 article Newsie::getSecondary(){
-    return secondary_;
+    return this->secondary_;
 }
 
 // getter for tertiary
 article Newsie::getTertiary(){
-    return tertiary_;
+    return this->tertiary_;
 }
 
 // getter for term_goal
@@ -109,6 +109,16 @@ void Newsie::setCurrent_emergency(Assignment* prio){
     current_emergency_ = prio;
 }
 
+bool Newsie::getAndCompareTertiary(article tertiary) {
+    return tertiary == tertiary_;
+}
+bool Newsie::getAndCompareSecondary(article secondary) {
+    return secondary == secondary_;
+}
+bool Newsie::getAndComparePrimary(article primary) {
+    return primary = primary_;
+}
+
 int main() {
 	puts("Some terminal and file I/O!"); /* prints !!!Hello World!!! */
 
@@ -157,7 +167,6 @@ int main() {
         std::string fName = std::string(firstname_);
         std::string lName = std::string(lastname_);
         std::string NDP = std::string(non_de_plume_);
-
         newsies.emplace_back(Newsie(fName, lName, gpa_, IDnum_, title_, primary_, secondary_, tertiary_, term_goal_, term_kount_, terms_, NDP));
      }
 
@@ -201,6 +210,64 @@ int main() {
         assignment.print();
     }
 
+    for (auto student : newsies) {
+        for (int i = 0; i < assignments.size(); i++) {
+            //Checks if the assignment is in the students purview
+            std::cout << (student.getPrimary() == assignments[i].getDesk()) << std::endl;
+            std::cout << (student.getSecondary() == assignments[i].getDesk()) << std::endl;
+            std::cout << (student.getTertiary() == assignments[i].getDesk()) << std::endl;
+            if ((student.getPrimary() == assignments[i].getDesk())
+                && !assignments[i].getAssigned()) {
+                //sets current priority to whatever assignment it matched
+                if (student.getCurrent_priority() == nullptr) {
+                    student.setCurrent_priority(&assignments[i]);
+                }
+                //sets current priority to whatever assignment it matched
+                if (student.getCurrent_extra() == nullptr) {
+                    student.setCurrent_extra(&assignments[i]);
+                }
+                //sets current priority to whatever assignment it matched
+                if (student.getCurrent_priority() == nullptr) {
+                    student.setCurrent_priority(&assignments[i]);
+                }
+            }
+            //Checks if the assignment is in the students purview
+            if ((student.getSecondary() == assignments[i].getDesk())
+                && !assignments[i].getAssigned()) {
+                //sets current priority to whatever assignment it matched
+                if (student.getCurrent_priority() == nullptr) {
+                    student.setCurrent_priority(&assignments[i]);
+                }
+                //sets current priority to whatever assignment it matched
+                if (student.getCurrent_extra() == nullptr) {
+                    student.setCurrent_extra(&assignments[i]);
+                }
+                //sets current priority to whatever assignment it matched
+                if (student.getCurrent_priority() == nullptr) {
+                    student.setCurrent_priority(&assignments[i]);
+                }
+            }
+            //Checks if the assignment is in the students purview
+            if ((student.getTertiary() == assignments[i].getDesk())
+                && !assignments[i].getAssigned()) {
+                //sets current priority to whatever assignment it matched
+                if (student.getCurrent_priority() == nullptr) {
+                    student.setCurrent_priority(&assignments[i]);
+                }
+                //sets current priority to whatever assignment it matched
+                if (student.getCurrent_extra() == nullptr) {
+                    student.setCurrent_extra(&assignments[i]);
+                }
+                //sets current priority to whatever assignment it matched
+                if (student.getCurrent_priority() == nullptr) {
+                    student.setCurrent_priority(&assignments[i]);
+                }
+            }
+        }
+    }
+    for (auto assignment : assignments) {
+        std::cout << assignment.getAssigned() << std::endl;
+    }
     // TODO
     /*
      * Gompei's task is to make sure each prospective newspaper story is

@@ -39,6 +39,10 @@ public:
     void setCurrent_extra(Assignment* prio);
     void setCurrent_emergency(Assignment* prio);
 
+    bool getAndComparePrimary(article primary);
+    bool getAndCompareSecondary(article secondary);
+    bool getAndCompareTertiary(article tertiary);
+
 protected:
     position title_;
 
