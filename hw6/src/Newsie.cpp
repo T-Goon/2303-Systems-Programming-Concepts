@@ -130,8 +130,22 @@ bool allDiscovered (std::vector<Assignment> assignment) {
 
 void printStudentAssignments (std::vector<Newsie> newsies, std::vector<Assignment> assignments) {
     for (auto student : newsies) {
-        std::cout << student.first_name() << " " << student.getNon_de_plume() << " " << student.last_name() << " "
-                  << student.getTitle() << ": " << std::endl;
+        std::cout << student.first_name() << " " << student.getNon_de_plume() << " " << student.last_name() << " ";
+        if (student.getTitle() == 0) {
+            std::cout << "Editor " << std::endl;
+        }
+        if (student.getTitle() == 1) {
+            std::cout << "Deputy_Editor " << std::endl;
+        }
+        if (student.getTitle() == 2) {
+            std::cout << "Assistant_Editor " << std::endl;
+        }
+        if (student.getTitle() == 3) {
+            std::cout << "Reporter " << std::endl;
+        }
+        if (student.getTitle() == 4) {
+            std::cout << "Cub_Reporter " << std::endl;
+        }
         for (auto assignment : assignments) {
             if (assignment.getAssignedNewsie().full_name() == student.full_name()) {
                 std::cout << "     " << assignment.getTempTitle() << std::endl;
@@ -144,11 +158,25 @@ void printStudentAssignments (std::vector<Newsie> newsies, std::vector<Assignmen
 
 void printWeeklyAssignments(std::vector<Newsie> newsies, std::vector<Assignment> assignments) {
     for (auto student : newsies) {
-        std::cout << student.last_name() << " " << student.getTitle() << " ";
+        std::cout << student.last_name() << " ";
+        if (student.getTitle() == 0) {
+            std::cout << "Editor ";
+        }
+        if (student.getTitle() == 1) {
+            std::cout << "Deputy_Editor ";
+        }
+        if (student.getTitle() == 2) {
+            std::cout << "Assistant_Editor ";
+        }
+        if (student.getTitle() == 3) {
+            std::cout << "Reporter ";
+        }
+        if (student.getTitle() == 4) {
+            std::cout << "Cub_Reporter ";
+        }
         for (auto assignment : assignments) {
             if (assignment.getAssignedNewsie().full_name() == student.full_name()) {
-                std::cout << " " << assignment.getTempTitle() << std::endl;
-
+                std::cout << assignment.getTempTitle() << std::endl;
             }
         }
         std::cout << std::endl;
