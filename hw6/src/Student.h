@@ -26,7 +26,8 @@ public:
 	Student(
 	        std::string first_name, std::string last_name, float gpa, int id):
 	            first_(std::move(first_name)), last_(std::move(last_name)), gpa_(gpa), id_(id) { }
-
+    std::string first_name();
+    std::string last_name();
 	virtual ~Student();
 	std::string full_name();
 	int id();

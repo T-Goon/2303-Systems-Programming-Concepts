@@ -298,7 +298,17 @@ int main() {
         assignment.print();
     }
 
-    std::cout << "Since all of these numbers are ones, an assignment has been assigned to every newsie" << std::endl;
+    for (auto student : newsies) {
+        std::cout << student.first_name() << " " << student.getNon_de_plume() << " " << student.last_name() <<  " " << student.getTitle() << ": " << std::endl;
+        for (auto assignment : assignments) {
+            if (assignment.getAssignedNewsie().full_name() == student.full_name()) {
+                std::cout << "     " << assignment.getTempTitle() << std::endl;
+
+            }
+        }
+        std::cout << std::endl;
+    }
+
 
 	return 0;
 }

@@ -20,6 +20,14 @@ Student::~Student() {
 std::string Student::full_name(){
     return first_ + " " + last_;
 }
+// Returns the student's first name
+std::string Student::first_name(){
+    return first_;
+}
+// Returns the student's full name
+std::string Student::last_name(){
+    return last_;
+}
 
 // returns the student's id
 int Student::id(){
