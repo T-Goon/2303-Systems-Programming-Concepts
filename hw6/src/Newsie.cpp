@@ -142,6 +142,19 @@ void printStudentAssignments (std::vector<Newsie> newsies, std::vector<Assignmen
     }
 }
 
+void printWeeklyAssignments(std::vector<Newsie> newsies, std::vector<Assignment> assignments) {
+    for (auto student : newsies) {
+        std::cout << student.last_name() << " " << student.getTitle() << " ";
+        for (auto assignment : assignments) {
+            if (assignment.getAssignedNewsie().full_name() == student.full_name()) {
+                std::cout << " " << assignment.getTempTitle() << std::endl;
+
+            }
+        }
+        std::cout << std::endl;
+    }
+}
+
 int main() {
 	puts("Some terminal and file I/O!"); /* prints !!!Hello World!!! */
 
@@ -312,7 +325,7 @@ int main() {
         assignment.print();
     }
     printStudentAssignments(newsies, assignments);
-
+    printWeeklyAssignments(newsies, assignments);
 
 
 
