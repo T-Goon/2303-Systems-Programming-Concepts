@@ -128,6 +128,20 @@ bool allDiscovered (std::vector<Assignment> assignment) {
     return true;
 }
 
+void printStudentAssignments (std::vector<Newsie> newsies, std::vector<Assignment> assignments) {
+    for (auto student : newsies) {
+        std::cout << student.first_name() << " " << student.getNon_de_plume() << " " << student.last_name() << " "
+                  << student.getTitle() << ": " << std::endl;
+        for (auto assignment : assignments) {
+            if (assignment.getAssignedNewsie().full_name() == student.full_name()) {
+                std::cout << "     " << assignment.getTempTitle() << std::endl;
+
+            }
+        }
+        std::cout << std::endl;
+    }
+}
+
 int main() {
 	puts("Some terminal and file I/O!"); /* prints !!!Hello World!!! */
 
@@ -297,17 +311,10 @@ int main() {
     for(auto assignment : assignments){
         assignment.print();
     }
+    printStudentAssignments(newsies, assignments);
 
-    for (auto student : newsies) {
-        std::cout << student.first_name() << " " << student.getNon_de_plume() << " " << student.last_name() <<  " " << student.getTitle() << ": " << std::endl;
-        for (auto assignment : assignments) {
-            if (assignment.getAssignedNewsie().full_name() == student.full_name()) {
-                std::cout << "     " << assignment.getTempTitle() << std::endl;
 
-            }
-        }
-        std::cout << std::endl;
-    }
+
 
 
 	return 0;
