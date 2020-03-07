@@ -218,6 +218,7 @@ int main() {
     for(auto assignment : assignments){
         assignment.print();
     }
+
     while (!allDiscovered(assignments)) {
         for (auto student : newsies) {
             for (int i = 0; i < assignments.size(); i++) {
@@ -228,16 +229,19 @@ int main() {
                     if (student.getCurrent_priority() == nullptr) {
                         student.setCurrent_priority(&assignments[i]);
                         assignments[i].setAssigned(true);
+                        assignments[i].setAssignedNewsie(student);
                     }
                     //sets current priority to whatever assignment it matched
                     if (student.getCurrent_extra() == nullptr) {
                         student.setCurrent_extra(&assignments[i]);
                         assignments[i].setAssigned(true);
+                        assignments[i].setAssignedNewsie(student);
                     }
                     //sets current priority to whatever assignment it matched
                     if (student.getCurrent_priority() == nullptr) {
                         student.setCurrent_priority(&assignments[i]);
                         assignments[i].setAssigned(true);
+                        assignments[i].setAssignedNewsie(student);
                     }
                 }
                 //Checks if the assignment is in the students purview
@@ -247,16 +251,19 @@ int main() {
                     if (student.getCurrent_priority() == nullptr) {
                         student.setCurrent_priority(&assignments[i]);
                         assignments[i].setAssigned(true);
+                        assignments[i].setAssignedNewsie(student);
                     }
                     //sets current priority to whatever assignment it matched
                     if (student.getCurrent_extra() == nullptr) {
                         student.setCurrent_extra(&assignments[i]);
                         assignments[i].setAssigned(true);
+                        assignments[i].setAssignedNewsie(student);
                     }
                     //sets current priority to whatever assignment it matched
                     if (student.getCurrent_priority() == nullptr) {
                         student.setCurrent_priority(&assignments[i]);
                         assignments[i].setAssigned(true);
+                        assignments[i].setAssignedNewsie(student);
                     }
                 }
                 //Checks if the assignment is in the students purview
@@ -266,44 +273,32 @@ int main() {
                     if (student.getCurrent_priority() == nullptr) {
                         student.setCurrent_priority(&assignments[i]);
                         assignments[i].setAssigned(true);
+                        assignments[i].setAssignedNewsie(student);
                     }
                     //sets current priority to whatever assignment it matched
                     if (student.getCurrent_extra() == nullptr) {
                         student.setCurrent_extra(&assignments[i]);
                         assignments[i].setAssigned(true);
+                        assignments[i].setAssignedNewsie(student);
                     }
                     //sets current priority to whatever assignment it matched
                     if (student.getCurrent_priority() == nullptr) {
                         student.setCurrent_priority(&assignments[i]);
                         assignments[i].setAssigned(true);
+                        assignments[i].setAssignedNewsie(student);
                     }
                 }
             }
         }
     }
-    for (auto assignment : assignments) {
-        std::cout << assignment.getAssigned() << std::endl;
+
+    std::cout<< std::endl<<std::endl;
+
+    for(auto assignment : assignments){
+        assignment.print();
     }
 
     std::cout << "Since all of these numbers are ones, an assignment has been assigned to every newsie" << std::endl;
-    // TODO
-    /*
-     * Gompei's task is to make sure each prospective newspaper story is
-        assigned to a writer. There are only two constraints:
-        First: No article can be assigned to a writer who does not work the corre-
-        sponding desk. That is, Skye Svenson writes Entertainment, Sports, and
-        Humor so must not be assigned a News story.
-        Second: No writer can take on more
-     */
-
-     printf("\n\nA Newsie takes up %d bytes.\nWhy so much?\n\n", sizeof(Newsie));
-
-
-
-
-
-
-
 
 	return 0;
 }

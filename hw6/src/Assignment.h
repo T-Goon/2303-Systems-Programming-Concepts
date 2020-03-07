@@ -21,15 +21,15 @@ public:
     std::string getTempTitle();
     bool getAssigned();
     void setAssigned(bool assigned);
-    Student* getAssignedNewsie();
-    void setAssignedNewsie(Student* newsie);
+    Student getAssignedNewsie();
+    void setAssignedNewsie(Student& newsie);
     void print();
 
 private:
     article _desk;
     std::string _tempTitle;
     bool _assigned;
-    Student* _assignedNewsie;
+    Student _assignedNewsie;
 };
 
 
