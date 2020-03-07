@@ -12,6 +12,8 @@
 #include "Assignment.h"
 #include "enums.h"
 
+bool allDiscovered(std::vector<Assignment> assignment);
+
 class Newsie : public Student{
 public:
     Newsie() = default;

@@ -23,7 +23,6 @@ public:
     void setAssigned(bool assigned);
     Student* getAssignedNewsie();
     void setAssignedNewsie(Student* newsie);
-
     void print();
 
 private:

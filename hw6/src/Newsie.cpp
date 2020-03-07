@@ -119,6 +119,15 @@ bool Newsie::getAndComparePrimary(article primary) {
     return primary = primary_;
 }
 
+bool allDiscovered (std::vector<Assignment> assignment) {
+    for (int i = 0; i < assignment.size(); i++) {
+        if (!assignment[i].getAssigned()) {
+            return false;
+        }
+    }
+    return true;
+}
+
 int main() {
 	puts("Some terminal and file I/O!"); /* prints !!!Hello World!!! */
 
@@ -209,58 +218,65 @@ int main() {
     for(auto assignment : assignments){
         assignment.print();
     }
-
-    for (auto student : newsies) {
-        for (int i = 0; i < assignments.size(); i++) {
-            //Checks if the assignment is in the students purview
-            std::cout << (student.getPrimary() == assignments[i].getDesk()) << std::endl;
-            std::cout << (student.getSecondary() == assignments[i].getDesk()) << std::endl;
-            std::cout << (student.getTertiary() == assignments[i].getDesk()) << std::endl;
-            if ((student.getPrimary() == assignments[i].getDesk())
-                && !assignments[i].getAssigned()) {
-                //sets current priority to whatever assignment it matched
-                if (student.getCurrent_priority() == nullptr) {
-                    student.setCurrent_priority(&assignments[i]);
+    while (!allDiscovered(assignments)) {
+        for (auto student : newsies) {
+            for (int i = 0; i < assignments.size(); i++) {
+                //Checks if the assignment is in the students purview
+                if ((student.getPrimary() == assignments[i].getDesk())
+                    && !assignments[i].getAssigned()) {
+                    //sets current priority to whatever assignment it matched
+                    if (student.getCurrent_priority() == nullptr) {
+                        student.setCurrent_priority(&assignments[i]);
+                        assignments[i].setAssigned(true);
+                    }
+                    //sets current priority to whatever assignment it matched
+                    if (student.getCurrent_extra() == nullptr) {
+                        student.setCurrent_extra(&assignments[i]);
+                        assignments[i].setAssigned(true);
+                    }
+                    //sets current priority to whatever assignment it matched
+                    if (student.getCurrent_priority() == nullptr) {
+                        student.setCurrent_priority(&assignments[i]);
+                        assignments[i].setAssigned(true);
+                    }
                 }
-                //sets current priority to whatever assignment it matched
-                if (student.getCurrent_extra() == nullptr) {
-                    student.setCurrent_extra(&assignments[i]);
+                //Checks if the assignment is in the students purview
+                if ((student.getSecondary() == assignments[i].getDesk())
+                    && !assignments[i].getAssigned()) {
+                    //sets current priority to whatever assignment it matched
+                    if (student.getCurrent_priority() == nullptr) {
+                        student.setCurrent_priority(&assignments[i]);
+                        assignments[i].setAssigned(true);
+                    }
+                    //sets current priority to whatever assignment it matched
+                    if (student.getCurrent_extra() == nullptr) {
+                        student.setCurrent_extra(&assignments[i]);
+                        assignments[i].setAssigned(true);
+                    }
+                    //sets current priority to whatever assignment it matched
+                    if (student.getCurrent_priority() == nullptr) {
+                        student.setCurrent_priority(&assignments[i]);
+                        assignments[i].setAssigned(true);
+                    }
                 }
-                //sets current priority to whatever assignment it matched
-                if (student.getCurrent_priority() == nullptr) {
-                    student.setCurrent_priority(&assignments[i]);
-                }
-            }
-            //Checks if the assignment is in the students purview
-            if ((student.getSecondary() == assignments[i].getDesk())
-                && !assignments[i].getAssigned()) {
-                //sets current priority to whatever assignment it matched
-                if (student.getCurrent_priority() == nullptr) {
-                    student.setCurrent_priority(&assignments[i]);
-                }
-                //sets current priority to whatever assignment it matched
-                if (student.getCurrent_extra() == nullptr) {
-                    student.setCurrent_extra(&assignments[i]);
-                }
-                //sets current priority to whatever assignment it matched
-                if (student.getCurrent_priority() == nullptr) {
-                    student.setCurrent_priority(&assignments[i]);
-                }
-            }
-            //Checks if the assignment is in the students purview
-            if ((student.getTertiary() == assignments[i].getDesk())
-                && !assignments[i].getAssigned()) {
-                //sets current priority to whatever assignment it matched
-                if (student.getCurrent_priority() == nullptr) {
-                    student.setCurrent_priority(&assignments[i]);
-                }
-                //sets current priority to whatever assignment it matched
-                if (student.getCurrent_extra() == nullptr) {
-                    student.setCurrent_extra(&assignments[i]);
-                }
-                //sets current priority to whatever assignment it matched
-                if (student.getCurrent_priority() == nullptr) {
-                    student.setCurrent_priority(&assignments[i]);
+                //Checks if the assignment is in the students purview
+                if ((student.getTertiary() == assignments[i].getDesk())
+                    && !assignments[i].getAssigned()) {
+                    //sets current priority to whatever assignment it matched
+                    if (student.getCurrent_priority() == nullptr) {
+                        student.setCurrent_priority(&assignments[i]);
+                        assignments[i].setAssigned(true);
+                    }
+                    //sets current priority to whatever assignment it matched
+                    if (student.getCurrent_extra() == nullptr) {
+                        student.setCurrent_extra(&assignments[i]);
+                        assignments[i].setAssigned(true);
+                    }
+                    //sets current priority to whatever assignment it matched
+                    if (student.getCurrent_priority() == nullptr) {
+                        student.setCurrent_priority(&assignments[i]);
+                        assignments[i].setAssigned(true);
+                    }
                 }
             }
         }
@@ -268,6 +284,8 @@ int main() {
     for (auto assignment : assignments) {
         std::cout << assignment.getAssigned() << std::endl;
     }
+
+    std::cout << "Since all of these numbers are ones, an assignment has been assigned to every newsie" << std::endl;
     // TODO
     /*
      * Gompei's task is to make sure each prospective newspaper story is

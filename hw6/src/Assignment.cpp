@@ -2,6 +2,7 @@
 // Created by Timothy Goon, Patrick Houlihan on 2/29/2020.
 //
 
+#include <c++/4.8.3/vector>
 #include "Assignment.h"
 
 // Constructor
